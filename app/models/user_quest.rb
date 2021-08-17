@@ -1,0 +1,2 @@
+class UserQuest < ApplicationRecord
+end
