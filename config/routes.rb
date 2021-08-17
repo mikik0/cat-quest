@@ -9,5 +9,6 @@ Rails.application.routes.draw do
     post  'signup' => 'devise/registrations#create'
   end
   resources :users, only: [:show, :edit, :update]
+  resources :quests
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
