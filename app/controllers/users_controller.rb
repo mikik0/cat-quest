@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   def show
+    @quests = Quest.all
   end
 
   def edit

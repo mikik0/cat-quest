@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          authentication_keys: [:name]
 
+  has_many :user_quests, dependent: :destroy
+
 # No use email
   def email_required?
     false

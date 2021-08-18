@@ -1,30 +1,12 @@
-aaaaaaa
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>meeting_link</th>
-      <th>meeting_held_at</th>
-      <th>strated_at</th>
-      <th>finished_at</th>
-      <th colspan="5"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @quests.each do |quest| %>
+<%# そのクエストの見るべき動画の一覧！ %>
+  <% @quests.each do |quest| %>
+    <% quest.contents.each do |content| %>
       <tr>
-        <td><%= quest.title %></td>
-        <td><%= quest.description %></td>
-        <td><%= quest.meeting_link %></td>
-        <td><%= quest.meeting_held_at %></td>
-        <td><%= quest.strated_at %></td>
-        <td><%= quest.finished_at %></td>
-        <td><%= link_to 'Show', quest %></td>
-        <td><%= link_to 'Edit', edit_quest_path(quest) %></td>
-        <td><%= link_to 'Destroy', quest, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= content.title %></td>
+        <td><%= content.youtube_url %></td>
+        <%= link_to quest_content_path(quest,content), target: :_blank do %>
+          <img class="lazyloaded" src="https://img.youtube.com/vi/m34DPnRUfMU/hqdefault.jpg">
+        <% end %>
       </tr>
     <% end %>
-  </tbody>
-</table>
+  <% end %>
