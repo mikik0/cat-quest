@@ -7,6 +7,7 @@ class CreateQuests < ActiveRecord::Migration[5.2]
       t.time :meeting_held_at
       t.time :strated_at
       t.time :finished_at
+      t.boolean :is_cleared, default: false
 
       t.timestamps
     end
