@@ -11,13 +11,23 @@
 </p>
 
 <p>
-  <strong>Time limit:</strong>
-  <%= @quest.time_limit %>
+  <strong>meeting_link:</strong>
+  <%= @quest.meeting_link %>
 </p>
 
 <p>
-  <strong>Started at:</strong>
-  <%= @quest.started_at %>
+  <strong>meeting_held_at:</strong>
+  <%= @quest.meeting_held_at %>
+</p>
+
+<p>
+  <strong>strated_at:</strong>
+  <%= @quest.strated_at %>
+</p>
+
+<p>
+  <strong>finished_at:</strong>
+  <%= @quest.finished_at %>
 </p>
 
 <%= link_to 'Edit', edit_quest_path(@quest) %> |
