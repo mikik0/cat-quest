@@ -4,9 +4,9 @@ class CreateQuests < ActiveRecord::Migration[5.2]
       t.string :title
       t.text   :description
       t.string :meeting_link
-      t.datetime :meeting_held_at
-      t.datetime :strated_at
-      t.datetime :finished_at
+      t.time :meeting_held_at
+      t.time :strated_at
+      t.time :finished_at
 
       t.timestamps
     end

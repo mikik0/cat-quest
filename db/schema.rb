@@ -16,9 +16,9 @@ ActiveRecord::Schema.define(version: 2021_08_17_064318) do
   enable_extension "plpgsql"
 
   create_table "characters", force: :cascade do |t|
+    t.integer "level"
     t.string "name"
     t.string "image_id"
-    t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -26,7 +26,6 @@ ActiveRecord::Schema.define(version: 2021_08_17_064318) do
   create_table "contents", force: :cascade do |t|
     t.bigint "quest_id"
     t.string "youtube_url"
-    t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["quest_id"], name: "index_contents_on_quest_id"
@@ -34,7 +33,7 @@ ActiveRecord::Schema.define(version: 2021_08_17_064318) do
 
   create_table "nekokans", force: :cascade do |t|
     t.bigint "user_id"
-    t.datetime "date"
+    t.date "acquired_at"
     t.string "nekocan"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -45,9 +44,9 @@ ActiveRecord::Schema.define(version: 2021_08_17_064318) do
     t.string "title"
     t.text "description"
     t.string "meeting_link"
-    t.datetime "meeting_held_at"
-    t.datetime "strated_at"
-    t.datetime "finished_at"
+    t.time "meeting_held_at"
+    t.time "strated_at"
+    t.time "finished_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -80,6 +79,7 @@ ActiveRecord::Schema.define(version: 2021_08_17_064318) do
     t.bigint "user_id"
     t.bigint "quest_id"
     t.boolean "is_owner", default: false
+    t.boolean "is_finished", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["quest_id"], name: "index_user_quests_on_quest_id"
