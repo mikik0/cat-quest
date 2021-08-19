@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_17_064318) do
+ActiveRecord::Schema.define(version: 2021_08_19_075750) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,13 @@ ActiveRecord::Schema.define(version: 2021_08_17_064318) do
     t.index ["quest_id"], name: "index_contents_on_quest_id"
   end
 
+  create_table "level_thresholds", force: :cascade do |t|
+    t.integer "level"
+    t.integer "threshold"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "nekokans", force: :cascade do |t|
     t.bigint "user_id"
     t.date "acquired_at"
@@ -47,6 +54,7 @@ ActiveRecord::Schema.define(version: 2021_08_17_064318) do
     t.time "meeting_held_at"
     t.time "strated_at"
     t.time "finished_at"
+    t.boolean "is_cleared", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
