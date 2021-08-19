@@ -3,7 +3,7 @@ class ContentController < ApplicationController
 
   def index
     @quests = Quest.all
-	@contents = Content.all
+    @contents = Content.all
   end
 
   def show
