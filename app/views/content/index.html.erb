@@ -4,8 +4,8 @@
       <tr>
         <td><%= content.title %></td>
         <td><%= content.youtube_url %></td>
-        <%= link_to quest_content_path(quest,content), target: :_blank do %>
-          <img class="lazyloaded" src="https://img.youtube.com/vi/m34DPnRUfMU/hqdefault.jpg">
+        <%= link_to user_quest_content_path(current_user, quest,content), target: :_blank do %>
+          <img class="lazyloaded" src="https://img.youtube.com/vi/<%= content.youtube_url.gsub("https://www.youtube.com/watch?v=","") %>/hqdefault.jpg">
         <% end %>
       </tr>
     <% end %>
