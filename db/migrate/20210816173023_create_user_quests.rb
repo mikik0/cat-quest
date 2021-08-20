@@ -4,6 +4,7 @@ class CreateUserQuests < ActiveRecord::Migration[5.2]
       t.references :user, foreign_key: true
       t.references :quest, foreign_key: true
       t.boolean :is_owner, default: false
+      t.boolean :is_finished, default: false
 
       t.timestamps
     end
