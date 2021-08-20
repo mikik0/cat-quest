@@ -8,7 +8,7 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :name
       t.text   :introduction
       t.integer :total_nekokan
-      t.references :characters, foreign_key: true
+      t.references :character, foreign_key: true
       t.string :encrypted_password, null: false, default: ""
 
       ## Recoverable

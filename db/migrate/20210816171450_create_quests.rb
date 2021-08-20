@@ -3,10 +3,9 @@ class CreateQuests < ActiveRecord::Migration[5.2]
     create_table :quests do |t|
       t.string :title
       t.text   :description
-      t.string :meeting_link
-      t.datetime :meeting_held_at
-      t.datetime :strated_at
-      t.datetime :finished_at
+      t.integer :total_video_time
+      t.time :strated_at
+      t.time :finished_at
 
       t.timestamps
     end
