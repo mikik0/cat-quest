@@ -22,13 +22,18 @@
   </div>
 
   <div class="field">
-    <%= form.label :time_limit %>
-    <%= form.datetime_select :time_limit %>
+    <%= form.label :total_video_time %>
+    <%# 自動入力 %>
   </div>
 
   <div class="field">
-    <%= form.label :started_at %>
-    <%= form.datetime_select :started_at %>
+    <%= form.label :strated_at %>
+    <%= form.datetime_select :strated_at %>
+  </div>
+
+  <div class="field">
+    <%= form.label :finished_at %>
+    <%= form.datetime_select :finished_at %>
   </div>
 
   <div class="actions">

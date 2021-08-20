@@ -11,14 +11,21 @@
 </p>
 
 <p>
-  <strong>Time limit:</strong>
-  <%= @quest.time_limit %>
+  <strong>total_video_time:</strong>
+  <%= @quest.total_video_time %>
 </p>
 
 <p>
-  <strong>Started at:</strong>
-  <%= @quest.started_at %>
+  <strong>strated_at:</strong>
+  <%= @quest.strated_at %>
 </p>
+
+<p>
+  <strong>finished_at:</strong>
+  <%= @quest.finished_at %>
+</p>
+
+<%# 参加するボタンをつける %>
 
 <%= link_to 'Edit', edit_quest_path(@quest) %> |
 <%= link_to 'Back', quests_path %>
