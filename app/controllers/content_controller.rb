@@ -19,6 +19,6 @@ class ContentController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def content_params
-      params.require(:content).permit(:quest_id, :youtube_url, :title)
+      params.require(:content).permit(:quest_id, :youtube_url)
     end
 end
