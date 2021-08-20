@@ -21,24 +21,29 @@ Character.create(
     password: "password"
   )
 
-  quest = Quest.new(
+  Quest.create(
     title: "ダミークエスト#{n + 1}",
     description: "ダミーのクエスト#{n + 1}です",
+    finished_at: Time.current
   )
-  quest.finished_at = Time.current
-  quest.save
 
   UserQuest.create(
-    user_id: n + 1,
-    quest_id: 1,
+    user_id:  1,
+    quest_id: n + 1,
     is_finished: false
   )
-
+  
 end
 
+  quest = Quest.create(
+    title: "ダミークエスト6",
+    description: "ダミーのクエスト6です",
+    #10日先の期限
+    finished_at: Time.current+ 10* 24 * 60 * 60
+  )
+
   UserQuest.create(
-    user_id: 1,
-    quest_id: 1,
-    is_owner: true,
-    is_finished: true
+    user_id:  1,
+    quest_id: 6,
+    is_finished: false
   )

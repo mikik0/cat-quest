@@ -6,7 +6,7 @@ class User < ApplicationRecord
          authentication_keys: [:name]
 
   belongs_to :character
-  has_many :user_quests
+  has_many :user_quests, dependent: :destroy
   has_many :quests, through: :user_quests
   has_many :user_contents
 

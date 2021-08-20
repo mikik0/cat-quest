@@ -72,8 +72,8 @@ ActiveRecord::Schema.define(version: 2021_08_20_050728) do
     t.string "title"
     t.text "description"
     t.integer "total_video_time"
-    t.time "strated_at"
-    t.time "finished_at"
+    t.datetime "strated_at"
+    t.datetime "finished_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -96,6 +96,7 @@ ActiveRecord::Schema.define(version: 2021_08_20_050728) do
   create_table "user_contents", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "content_id"
+    t.boolean "is_finished", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["content_id"], name: "index_user_contents_on_content_id"
@@ -119,14 +120,10 @@ ActiveRecord::Schema.define(version: 2021_08_20_050728) do
     t.integer "total_nekokan"
     t.bigint "character_id"
     t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["character_id"], name: "index_users_on_character_id"
     t.index ["name"], name: "index_users_on_name", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "contents", "quests"
