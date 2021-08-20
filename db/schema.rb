@@ -54,7 +54,6 @@ ActiveRecord::Schema.define(version: 2021_08_19_075750) do
     t.time "meeting_held_at"
     t.time "strated_at"
     t.time "finished_at"
-    t.boolean "is_cleared", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -98,14 +97,14 @@ ActiveRecord::Schema.define(version: 2021_08_19_075750) do
     t.string "name"
     t.text "introduction"
     t.integer "total_nekokan"
-    t.bigint "characters_id"
+    t.bigint "character_id"
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["characters_id"], name: "index_users_on_characters_id"
+    t.index ["character_id"], name: "index_users_on_character_id"
     t.index ["name"], name: "index_users_on_name", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -118,5 +117,5 @@ ActiveRecord::Schema.define(version: 2021_08_19_075750) do
   add_foreign_key "user_contents", "users"
   add_foreign_key "user_quests", "quests"
   add_foreign_key "user_quests", "users"
-  add_foreign_key "users", "characters", column: "characters_id"
+  add_foreign_key "users", "characters"
 end
