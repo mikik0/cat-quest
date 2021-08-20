@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_19_075750) do
+ActiveRecord::Schema.define(version: 2021_08_20_050728) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,11 +31,32 @@ ActiveRecord::Schema.define(version: 2021_08_19_075750) do
     t.index ["quest_id"], name: "index_contents_on_quest_id"
   end
 
+  create_table "goods", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "memo_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["memo_id"], name: "index_goods_on_memo_id"
+    t.index ["user_id"], name: "index_goods_on_user_id"
+  end
+
   create_table "level_thresholds", force: :cascade do |t|
     t.integer "level"
     t.integer "threshold"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "memos", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "content_id"
+    t.text "text"
+    t.integer "time"
+    t.boolean "is_private", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["content_id"], name: "index_memos_on_content_id"
+    t.index ["user_id"], name: "index_memos_on_user_id"
   end
 
   create_table "nekokans", force: :cascade do |t|
@@ -50,8 +71,7 @@ ActiveRecord::Schema.define(version: 2021_08_19_075750) do
   create_table "quests", force: :cascade do |t|
     t.string "title"
     t.text "description"
-    t.string "meeting_link"
-    t.time "meeting_held_at"
+    t.integer "total_video_time"
     t.time "strated_at"
     t.time "finished_at"
     t.datetime "created_at", null: false
@@ -110,6 +130,10 @@ ActiveRecord::Schema.define(version: 2021_08_19_075750) do
   end
 
   add_foreign_key "contents", "quests"
+  add_foreign_key "goods", "memos"
+  add_foreign_key "goods", "users"
+  add_foreign_key "memos", "contents"
+  add_foreign_key "memos", "users"
   add_foreign_key "nekokans", "users"
   add_foreign_key "tag_contents", "contents"
   add_foreign_key "tag_contents", "tags"
