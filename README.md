@@ -18,4 +18,9 @@ docker-compose run web rails db:create
 docker-compose run web rails db:migrate
 ```
 
+and you should install all used gems, so exec command following.
+
+```
+docker-compose run web bundle install
+```
 

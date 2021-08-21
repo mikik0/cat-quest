@@ -1,7 +1,25 @@
 class TagsController < ApplicationController
 
+    def allContent
+        @contents = Content.all
+        render json: @contents
+    end
+
     def index
-        @content = Content.all
-        render json: @content
+        @tags = Tag.all
+        render json: @tags
+    end
     
-    def 
+    def create
+        @tag = Tag.new(tag_params)
+        if @tag.save
+          render json: { status: 'SUCCESS', data: @tag }
+        else
+          render json: { status: 'ERROR', data: @tag.errors }
+        end
+    end
+
+    def tag_params
+        params.require(:tag)
+    end
+end
