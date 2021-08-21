@@ -7,10 +7,10 @@ if __name__ == '__main__':
     for tag in taglist:
         tagdict[tag] = True
 
-    id = '0iB5IPoTDts'
-    caption = Caption('ja', id).caption()
+    id = '5fXwkTgWrjw'
+    caption = Caption('en', id).caption()
 
-    extracter = Extracter(caption, 'ja')
+    extracter = Extracter(caption, 'en')
     extracted = extracter.extract()
 
     winner = list()
