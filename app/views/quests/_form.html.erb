@@ -22,16 +22,70 @@
   </div>
 
   <div class="field">
-    <%= form.label :time_limit %>
-    <%= form.datetime_select :time_limit %>
+    <%= form.label :strated_at %>
+    <%= form.datetime_select :strated_at %>
   </div>
 
   <div class="field">
-    <%= form.label :started_at %>
-    <%= form.datetime_select :started_at %>
+    <%= form.label :finished_at %>
+    <%= form.datetime_select :finished_at %>
+  </div>
+
+   <%= form.fields_for :youtube_url do |youtube_url| %>
+   <div class="js-file-group">
+     <div class="tag-area__title">
+      youtube_url
+     </div>
+    <div id="form_area">
+      <%= form.text_field :youtube_url %>
+      <% if @quest.persisted? %>
+        <%= youtube_url.check_box :_destroy, data:{ index: youtube_url.index }, class: "hidden-destroy" %>
+      <% end %>
+    </div>
+    <input type="button" value="追加" onclick="addForm()">
+   </div>
+<% end %>
+
+  <div class="field">
+    <%= form.label :total_video_time %>
+    <%# 自動入力 %>
   </div>
 
   <div class="actions">
     <%= form.submit %>
   </div>
 <% end %>
+
+<script>
+var i = 1 ;
+
+function addForm() {
+  // var divElement = document.createElement("div");
+  // divElement.innerHTML = '<input type="text" maxlength="80">';
+
+  var input_data = document.createElement('input');
+  input_data.type = 'text';
+  input_data.id = 'inputform_' + i;
+  var parent = document.getElementById('form_area');
+  parent.appendChild(input_data);
+
+  var button_data = document.createElement('button');
+  button_data.id = i;
+  button_data.onclick = function(){deleteBtn(this);}
+  button_data.innerHTML = '削除';
+  var input_area = document.getElementById(input_data.id);
+  parent.appendChild(button_data);
+
+  i++ ;
+}
+
+function deleteBtn(target) {
+  var target_id = target.id;
+  var parent = document.getElementById('form_area');
+  var ipt_id = document.getElementById('inputform_' + target_id);
+  var tgt_id = document.getElementById(target_id);
+  parent.removeChild(ipt_id);
+  parent.removeChild(tgt_id);
+}
+
+</script>
