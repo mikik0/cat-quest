@@ -13,6 +13,7 @@ class QuestsController < ApplicationController
   # GET /quests/new
   def new
     @quest = Quest.new
+    # @youtube_url = @quest.youtube_url.new
   end
 
   # GET /quests/1/edit
@@ -64,6 +65,6 @@ class QuestsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def quest_params
-      params.require(:quest).permit(:title, :description, :total_video_time, :strated_at, :finished_at)
+      params.require(:quest).permit(:title, :description, :total_video_time, :strated_at, :finished_at, contents_attributes: [:youtube_url, :_destroy, :id])
     end
 end
