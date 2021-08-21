@@ -4,7 +4,7 @@ import json
 taglist = list()
 
 headers = {
-    'Authorization': 'Bearer 87710c2f7501f3b92c7e90c0f0fa5ff88ffc232e',
+    'Authorization': 'Bearer xxxxxxxxxxxxxxxxxxxxxxx',
 }
 
 for i in range(1, 101):
