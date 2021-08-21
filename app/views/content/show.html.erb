@@ -37,7 +37,7 @@
       });
     }
 
-    function getPlayStatus() {
+    var fn = function getPlayStatus() {
         var loaded = player.getVideoLoadedFraction();
         document.getElementById('loaded').innerHTML = (Math.floor(loaded*100)) + '%';
         var status = player.getPlayerState();
@@ -57,6 +57,12 @@
     function onPlayerReady(event) {
         document.getElementById('duration').innerHTML = player.getDuration() + '秒';
 
+    if (player.getCurrentTime() >= player.getDuration() - 60) {
+        console.log("おわり！");
     }
+
+    }
+
+    setInterval(fn, 1000);
 
 </script>
