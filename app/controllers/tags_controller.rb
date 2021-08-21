@@ -1,6 +1,6 @@
 class TagsController < ApplicationController
 
-    def allContent
+    def contents
         @contents = Content.all
         render json: @contents
     end
