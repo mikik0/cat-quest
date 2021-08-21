@@ -25,6 +25,8 @@
     firstScript = document.getElementsByTagName( 'script' )[ 0 ];
     firstScript.parentNode.insertBefore( script , firstScript );
 
+    var done = false;
+
     // 動画呼び出し
     function onYouTubeIframeAPIReady() {
       player = new YT.Player('ytplayer', {
@@ -52,15 +54,17 @@
         document.getElementById('status').innerHTML = names[status];
         var time = player.getCurrentTime();
         document.getElementById('time').innerHTML = time + '秒';
+
+        if (done == false) {
+            if (player.getCurrentTime() >= player.getDuration() - 60) {
+                console.log("おわり！");
+                done = true;
+            }
+        }
     }
 
     function onPlayerReady(event) {
         document.getElementById('duration').innerHTML = player.getDuration() + '秒';
-
-    if (player.getCurrentTime() >= player.getDuration() - 60) {
-        console.log("おわり！");
-    }
-
     }
 
     setInterval(fn, 1000);
