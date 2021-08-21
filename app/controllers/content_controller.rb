@@ -1,5 +1,6 @@
 class ContentController < ApplicationController
   before_action :set_content, only: %i[show]
+  before_action :authenticate_user!  
 
   def index
     @quests = Quest.all

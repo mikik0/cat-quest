@@ -1,5 +1,6 @@
 class QuestsController < ApplicationController
   before_action :set_quest, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!  
 
   # GET /quests or /quests.json
   def index
