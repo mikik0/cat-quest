@@ -1,10 +1,16 @@
 import youtube_dl
-import os, threading 
+import os, threading
+import re
+
 
 class Caption:
   def __init__(self, lang, target_id):
     self.lang = lang
     self.target_id = target_id
+
+  def remove_tag(self, text):
+    p = re.compile(r"<[^>]*?>")
+    return p.sub("", text)
 
   def vttdl(self):
     target_url = 'https://youtu.be/' + self.target_id
@@ -26,5 +32,5 @@ class Caption:
         os.remove(resultVtt)
       except FileNotFoundError:
         body = ""
-
-      return body
+        
+      return self.remove_tag(body)
