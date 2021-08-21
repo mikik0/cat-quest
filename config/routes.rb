@@ -17,4 +17,6 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show, :edit, :update]
   resources :quests
+
+  get 'tags', to: 'tags#index'
 end
