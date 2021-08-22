@@ -13,3 +13,6 @@
  *= require_tree .
  *= require_self
  */
+.sidebar{
+	background-color: #A08C6D;
+}

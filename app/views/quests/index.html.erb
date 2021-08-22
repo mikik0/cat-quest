@@ -7,9 +7,10 @@
     <tr>
       <th>Title</th>
       <th>Description</th>
-      <th>Time limit</th>
-      <th>Started at</th>
-      <th colspan="3"></th>
+      <th>total_video_time</th>
+      <th>strated_at</th>
+      <th>finished_at</th>
+      <th colspan="5"></th>
     </tr>
   </thead>
 
@@ -18,8 +19,9 @@
       <tr>
         <td><%= quest.title %></td>
         <td><%= quest.description %></td>
-        <td><%= quest.time_limit %></td>
-        <td><%= quest.started_at %></td>
+        <td><%= quest.total_video_time %></td>
+        <td><%= quest.strated_at %></td>
+        <td><%= quest.finished_at %></td>
         <td><%= link_to 'Show', quest %></td>
         <td><%= link_to 'Edit', edit_quest_path(quest) %></td>
         <td><%= link_to 'Destroy', quest, method: :delete, data: { confirm: 'Are you sure?' } %></td>
