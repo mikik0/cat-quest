@@ -1,0 +1,8 @@
+<% @contents.each do |memo| %>
+    <tr>
+        <td><%= memo.id %></td>
+        <td><%#= link_to "詳細", post_path(post) %></td>
+        <td><%#= link_to "編集", edit_post_path(post) %></td>
+        <td><%#= link_to "削除", post_path(post), method: :delete, remote: true %></td>
+    </tr>
+<% end %>

@@ -3,12 +3,38 @@ class ContentController < ApplicationController
 
   def index
     @quests = Quest.all
-    @contents = Content.all
   end
 
   def show
-    @quests = Quest.all
+  end
+
+  def create
     @contents = Content.all
+    @content = Content.new(content_params)
+    @content.user_id = current_user.id
+    if @content.save
+    else
+      render :new
+    end
+  end
+
+  def destroy
+    @contents = Content.all
+    @content = Content.find(params[:id])
+    @content.destroy
+  end
+
+  def edit
+   @content = Content.find(params[:id])
+  end
+
+  def update
+    @content = Content.find(params[:id])
+    if @content.update(content_params)
+      redirect_to request.referer
+    else
+      render :new
+    end
   end
 
   private
