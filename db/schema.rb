@@ -26,7 +26,6 @@ ActiveRecord::Schema.define(version: 2021_08_20_050728) do
   create_table "contents", force: :cascade do |t|
     t.bigint "quest_id"
     t.string "youtube_url"
-    t.string "video_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["quest_id"], name: "index_contents_on_quest_id"
@@ -121,7 +120,6 @@ ActiveRecord::Schema.define(version: 2021_08_20_050728) do
     t.integer "total_nekokan"
     t.bigint "character_id"
     t.string "encrypted_password", default: "", null: false
-    t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["character_id"], name: "index_users_on_character_id"

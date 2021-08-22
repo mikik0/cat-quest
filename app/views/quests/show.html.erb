@@ -24,6 +24,9 @@
   <strong>finished_at:</strong>
   <%= @quest.finished_at %>
 </p>
+<%# 参加するボタンをつける %>
+<p>参加する</p>
+<%#= button_to 'Join', @quest.id, :class => 'btn btn-primary' %>
 
 
 サムネイル
@@ -33,8 +36,6 @@
         <img class="lazyloaded" src="https://img.youtube.com/vi/<%= content.youtube_url.gsub("https://www.youtube.com/watch?v=","") %>/hqdefault.jpg">
     </tr>
   <% end %>
-
-<%# 参加するボタンをつける %>
 
 <%= link_to 'Edit', edit_quest_path(@quest) %> |
 <%= link_to 'Back', quests_path %>
