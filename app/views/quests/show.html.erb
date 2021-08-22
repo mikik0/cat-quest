@@ -25,7 +25,42 @@
   <%= @quest.finished_at %>
 </p>
 
+
+サムネイル
+  <% @quest.contents.each do |content| %>
+    <tr>
+      <td><%= content.youtube_url %></td>
+        <img class="lazyloaded" src="https://img.youtube.com/vi/<%= content.youtube_url.gsub("https://www.youtube.com/watch?v=","") %>/hqdefault.jpg">
+    </tr>
+  <% end %>
+
 <%# 参加するボタンをつける %>
 
 <%= link_to 'Edit', edit_quest_path(@quest) %> |
 <%= link_to 'Back', quests_path %>
+
+<script>
+    // API読み込み
+    script = document.createElement( 'script' );
+    script.src = "//www.youtube.com/iframe_api";
+    firstScript = document.getElementsByTagName( 'script' )[ 0 ];
+    firstScript.parentNode.insertBefore( script , firstScript );
+
+    // 動画呼び出し
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('ytplayer', {
+          height: '450',
+          width: '800',
+          events: {
+              'onReady': onPlayerReady,
+          },
+          videoId: '<%#= @quest.contents.youtube_url.gsub("https://www.youtube.com/watch?v=","") %>'
+      });
+    }
+
+    function onPlayerReady(event) {
+
+        document.getElementById('duration').innerHTML = player.getDuration() + '秒';
+    }
+
+</script>
