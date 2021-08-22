@@ -1,2 +1,72 @@
-<p><%= @content.youtube_url %></p>
-<iframe width="800" height="450" src="<%= @content.youtube_url.gsub("watch?v=","embed/") %>?loop=1" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<div id="ytplayer"></div>
+<div>
+<input type="button" name="btn_play_status" value="各種再生状態を取得" onclick="getPlayStatus();" />
+</div>
+<br />
+<div>バッファ済みの動画の割合</div>
+<div>※停止中のバッファは反映されない模様</div>
+<div id="loaded" style="border:solid 1px #ccc;height: 20px; width: 400px; background-color:#eee;"></div>
+<br />
+<div>プレーヤーの状態</div>
+<div id="status" style="border:solid 1px #ccc;height: 20px; width: 400px; background-color:#eee;"></div>
+<br />
+<div>再生開始からの経過時間</div>
+<div id="time" style="border:solid 1px #ccc;height: 20px; width: 400px; background-color:#eee;"></div>
+<div>動画の時間</div>
+<div id="duration" style="border:solid 1px #ccc;height: 20px; width: 400px; background-color:#eee;"></div>
+
+
+<%# メモ機能 %>
+
+<script>
+    // API読み込み
+    script = document.createElement( 'script' );
+    script.src = "//www.youtube.com/iframe_api";
+    firstScript = document.getElementsByTagName( 'script' )[ 0 ];
+    firstScript.parentNode.insertBefore( script , firstScript );
+
+    var done = false;
+
+    // 動画呼び出し
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('ytplayer', {
+          height: '450',
+          width: '800',
+          events: {
+              'onReady': onPlayerReady,
+          },
+          videoId: '<%= @content.youtube_url.gsub("https://www.youtube.com/watch?v=","") %>'
+      });
+    }
+
+    var fn = function getPlayStatus() {
+        var loaded = player.getVideoLoadedFraction();
+        document.getElementById('loaded').innerHTML = (Math.floor(loaded*100)) + '%';
+        var status = player.getPlayerState();
+        var names = {
+            '-1' : '未開始',
+            '0' : '終了',
+            '1' : '再生中',
+            '2' : '停止',
+            '3' : 'バッファリング中',
+            '5' : '頭出し済み'
+        };
+        document.getElementById('status').innerHTML = names[status];
+        var time = player.getCurrentTime();
+        document.getElementById('time').innerHTML = time + '秒';
+
+        if (done == false) {
+            if (player.getCurrentTime() >= player.getDuration() - 60) {
+                console.log("おわり！");
+                done = true;
+            }
+        }
+    }
+
+    function onPlayerReady(event) {
+        document.getElementById('duration').innerHTML = player.getDuration() + '秒';
+    }
+
+    setInterval(fn, 1000);
+
+</script>
