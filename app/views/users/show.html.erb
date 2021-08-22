@@ -1,2 +1,48 @@
-<h1>Users#show</h1>
-<p>現在ログイン中のuserの名前: <%= current_user.name %></p>
+<div>
+  現在のキャラ状況:
+  <img src="http://placehold.it/150x150">
+  <p><%= @user.name %></p>
+  <p><%= @user.introduction %></p>
+ 
+  <span data-comment-id=<%= @user.id %> class="js-edit-comment-button">
+    <p>edit_profile</p>
+    <div id="js-comment-<%= comment.id %>">
+      <p id="js-comment-label-<%= comment.id %>"><%= comment.body %></p>
+      <p id="js-comment-post-error-<%= comment.id %>" class="text-danger"></p>
+      <textarea style="display: none;" id="js-textarea-comment-<%= comment.id %>" class="form-control comment-post-error"><%= comment.body %></textarea>
+      <div id="js-comment-button-<%= comment.id %>" style="display: none;">
+      <button data-cancel-id=<%= comment.id %> type="button" class="btn btn-light comment-cancel-button">キャンセル</button>
+      <button data-update-id=<%= comment.id%> type="submit" class="btn btn-success comment-update-button">更新</button>
+    </div>
+</div>
+  </span>
+ 
+  <p> Lv.<%= @character.level %>  <% @character.name %></p>
+  <p>総獲得ねこ缶: <%= @user.total_nekokan %></p>
+</div>
+
+<div>
+<h1>現在のクエスト</h1>
+  <% if @current_quest.empty? %>
+    <p>現在受注中のクエストはありません</p>
+  <% else%>
+    <% @current_quest.each do |quest| %>
+      <p><%= quest.title %></p>
+      <% end %>
+  <% end %>
+</div>
+
+<div>
+<h1>過去のクエスト</h1>
+  <% if @past_quest.empty? %>
+    <p>完了済みのクエストはありません</p>
+  <% else%>
+    <% @past_quest.each do |quest| %>
+      <p><%= quest.title %></p>
+    <% end %>
+  <% end %>
+</div>
+
+<div>
+  <img src="http://placehold.it/450x150">
+</div>
