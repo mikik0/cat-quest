@@ -31,7 +31,6 @@
     <%= form.datetime_select :finished_at %>
   </div>
 
-
    <%= form.fields_for @quest.contents do |content| %>
    <div class="js-file-group">
      <div class="tag-area__title">
@@ -46,11 +45,6 @@
     <input type="button" value="追加" onclick="addForm()">
    </div>
 <% end %>
-
-  <div class="field">
-    <%= form.label :total_video_time %>
-    <%# 自動入力 %>
-  </div>
 
   <div class="actions">
     <%= form.submit %>

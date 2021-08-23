@@ -1,21 +1,24 @@
 class ContentController < ApplicationController
-  before_action :set_content, only: %i[show]
+  before_action :set_content
 
   def index
     @quests = Quest.all
   end
 
   def show
+	@memo = @content.memos
+  end
+
+  def new
+    @content = Content.new
+	@memo = Memo.new
   end
 
   def create
-    @contents = Content.all
-    @content = Content.new(content_params)
-    @content.user_id = current_user.id
-    if @content.save
-    else
-      render :new
-    end
+    @memo = Memo.new
+    @memo.user_id = current_user.id
+    @memo.save
+    redirect_to user_quest_content_path
   end
 
   def destroy
