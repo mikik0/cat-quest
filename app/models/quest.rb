@@ -6,4 +6,8 @@ class Quest < ApplicationRecord
      finished_at > Time.now
   end
 
+  def user_questsed_by?(user)
+    user_quests.exists?(user_id: user.id)
+  end
+
 end
