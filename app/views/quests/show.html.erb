@@ -24,7 +24,6 @@
   <%= @quest.finished_at %>
 </p>
 <%# 参加するボタンをつける %>
-<p>参加する</p>
 <p>
   <% if @quest.user_questsed_by?(current_user) %>
     <%= render "user_quests", quest: @quest %>
