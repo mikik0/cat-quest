@@ -14,8 +14,7 @@ Rails.application.routes.draw do
       resources :content
     end
   end
-  post 'users/:user_id/quests/:quest_id/content/:id',to: 'content#create',as: 'create_user_quest_content'
-  post 'quests/:id' => 'quests#create', as: 'create_quest'
+
   resources :users, only: [:show, :edit, :update]
 
   resources :quests do
