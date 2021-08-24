@@ -15,7 +15,6 @@ class QuestsController < ApplicationController
   def new
     @quest = Quest.new
     @quest.contents.build
-    contents = @quest.contents.build
   end
 
   # POST /quests or /quests.json
