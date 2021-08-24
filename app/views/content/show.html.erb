@@ -17,6 +17,22 @@
 
 
 <%# メモ機能 %>
+<p>メモ機能</p>
+<%= form_with model:[@memo], url: create_user_quest_content_path, data: {remote: true} do |f| %>
+    <div>
+        <%= f.label :本文 %>
+        <%= f.text_field :text, autofocus: true, id: "text" %>
+    </div>
+    <div><%= f.submit "投稿する" %></div>
+<% end %>
+
+<p>メモ一覧</p>
+<% @content.memos.each do |memo| %>
+    <tr>
+        <td><%= memo.id %></td>
+        <td><%= memo.text %></td>
+    </tr>
+<% end %>
 
 <script>
     // API読み込み
@@ -54,6 +70,8 @@
         document.getElementById('status').innerHTML = names[status];
         var time = player.getCurrentTime();
         document.getElementById('time').innerHTML = time + '秒';
+        document.getElementById('time').value = time;
+
 
         if (done == false) {
             if (player.getCurrentTime() >= player.getDuration() - 60) {
@@ -64,6 +82,7 @@
     }
 
     function onPlayerReady(event) {
+        document.getElementById('duration').value = player.getDuration();
         document.getElementById('duration').innerHTML = player.getDuration() + '秒';
     }
 

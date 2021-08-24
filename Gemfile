@@ -63,6 +63,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Devise
 gem 'devise'
-
-# Deviseのエラーメッセージの日本語化用
 gem 'devise-i18n'
+
+gem 'jquery-rails'

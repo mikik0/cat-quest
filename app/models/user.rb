@@ -24,6 +24,12 @@ class User < ApplicationRecord
     return current_quest,past_quest
   end
 
+  # userがクエストのオーナーかどうか
+  def owner?(quest_id)
+    quest = user_quests.find_by(quest_id: quest_id) 
+    quest.present? && quest.is_owner
+  end
+
   # No use email
   def email_required?
     false
