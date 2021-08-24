@@ -14,17 +14,13 @@ class QuestsController < ApplicationController
   # GET /quests/new
   def new
     @quest = Quest.new
-    # @youtube_url = @quest.youtube_url.new
-  end
-
-  # GET /quests/1/edit
-  def edit
+    @quest.contents.build
   end
 
   # POST /quests or /quests.json
   def create
-    @quest = Quest.new(quest_params)
-    
+    @quest = Quest.create(quest_params)
+
     respond_to do |format|
       if @quest.save
         #クエストを作成すると同時にそやつ自身もクエストに参加する
@@ -39,6 +35,10 @@ class QuestsController < ApplicationController
         format.json { render json: @quest.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  # GET /quests/1/edit
+  def edit
   end
 
   # PATCH/PUT /quests/1 or /quests/1.json
@@ -77,6 +77,13 @@ class QuestsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def quest_params
-      params.require(:quest).permit(:title, :description, :total_video_time, :strated_at, :finished_at, contents_attributes: [:youtube_url, :_destroy, :id])
+      params.require(:quest).permit(
+        :title,
+        :description,
+        :total_video_time,
+        :strated_at,
+        :finished_at,
+        contents_attributes: [:id, :youtube_url, :_destroy]
+      )
     end
 end
