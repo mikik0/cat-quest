@@ -14,7 +14,7 @@
     <p>現在受注中のクエストはありません</p>
   <% else%>
     <% @current_quest.each do |quest| %>
-      <p><%= link_to quest.title, user_quest_path(current_user,quest) %></p>
+      <p><%= link_to quest.title, quest_path(quest) %></p>
       <% end %>
   <% end %>
 </div>
@@ -25,7 +25,7 @@
     <p>完了済みのクエストはありません</p>
   <% else%>
     <% @past_quest.each do |quest| %>
-      <p><%= link_to quest.title, user_quest_path(current_user,quest) %></p>
+      <p><%= link_to quest.title, quest_path(quest) %></p>
     <% end %>
   <% end %>
 </div>
