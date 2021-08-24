@@ -7,22 +7,19 @@ class ContentController < ApplicationController
 
   def show
 	@memo = @content.memos
+    @quest = Quest.find(params[:myquest_id])
+    @content = Content.find(params[:id])
+    @memo = Memo.new
   end
 
   def new
-    @content = Content.new
-	@memo = Memo.new
   end
 
   def create
-    @memo = Memo.new
-    @memo.user_id = current_user.id
-    @memo.save
-    redirect_to user_quest_content_path
+
   end
 
   def destroy
-    @contents = Content.all
     @content = Content.find(params[:id])
     @content.destroy
   end
