@@ -13,6 +13,7 @@ class ContentController < ApplicationController
   end
 
   def new
+
   end
 
   def create
