@@ -14,11 +14,12 @@ class QuestsController < ApplicationController
   def new
     @quest = Quest.new
     @quest.contents.build
+    contents = @quest.contents.build
   end
 
   # POST /quests or /quests.json
   def create
-    @quest = Quest.new(quest_params)
+    @quest = Quest.create(quest_params)
 
     respond_to do |format|
       if @quest.save
