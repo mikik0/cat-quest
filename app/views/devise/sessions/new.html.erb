@@ -42,6 +42,8 @@ C464,288.704,448.328,333.792,421.832,370.584z"/>
 </svg>
 </div>
 <%= form_for(resource, as: resource_name, url: login_path) do |f| %>
+<%= render "devise/shared/error_messages", resource: resource %>
+<p class="alert"><%= alert %></p>
 <div class="flex my-8 mx-4 md:mx-2 border-b-2 border-gray-700 hover:border-green-800">
     <%= f.label :name, :class => 'self-center' %>
     <%= f.text_field :name, autofocus: true, :class => 'w-full py-3 pl-2 md:pl-8 border-0 focus:outline-none' %>

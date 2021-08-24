@@ -1,22 +1,9 @@
 <div>
   現在のキャラ状況:
   <img src="http://placehold.it/150x150">
-  <p><%= @user.name %></p>
-  <p><%= @user.introduction %></p>
- 
-  <span data-comment-id=<%= @user.id %> class="js-edit-comment-button">
-    <p>edit_profile</p>
-    <div id="js-comment-<%= comment.id %>">
-      <p id="js-comment-label-<%= comment.id %>"><%= comment.body %></p>
-      <p id="js-comment-post-error-<%= comment.id %>" class="text-danger"></p>
-      <textarea style="display: none;" id="js-textarea-comment-<%= comment.id %>" class="form-control comment-post-error"><%= comment.body %></textarea>
-      <div id="js-comment-button-<%= comment.id %>" style="display: none;">
-      <button data-cancel-id=<%= comment.id %> type="button" class="btn btn-light comment-cancel-button">キャンセル</button>
-      <button data-update-id=<%= comment.id%> type="submit" class="btn btn-success comment-update-button">更新</button>
-    </div>
-</div>
-  </span>
- 
+
+  <%= render "edit_profile", user: @user %>
+
   <p> Lv.<%= @character.level %>  <% @character.name %></p>
   <p>総獲得ねこ缶: <%= @user.total_nekokan %></p>
 </div>
@@ -46,3 +33,6 @@
 <div>
   <img src="http://placehold.it/450x150">
 </div>
+
+
+<%= javascript_include_tag 'edit_profile.js' %>

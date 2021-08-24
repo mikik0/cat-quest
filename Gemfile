@@ -66,3 +66,7 @@ gem 'devise'
 
 # 非同期処理のためのjQuery
 gem "jquery-rails"
+
+# Deviseのエラーメッセージの日本語化用
+gem 'devise-i18n'
+
