@@ -1,4 +1,4 @@
-<%= form_with(model: quest, local: true) do |form| %>
+<%= nested_form_for(@quest) do |form| %>
   <% if quest.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(quest.errors.count, "error") %> prohibited this quest from being saved:</h2>
@@ -37,43 +37,10 @@
     <div id="form_area">
       <%= c.text_field :youtube_url %>
     </div>
-    <input type="button" value="追加" onclick="addForm()">
   <% end %>
   </div>
-
+  <%= form.link_to_add "追加", :contents %>
   <div class="actions">
     <%= form.submit %>
   </div>
 <% end %>
-
-<script>
-var i = 1 ;
-
-function addForm() {
-
-
-  var input_data = document.createElement('input');
-  input_data.type = 'text';
-  input_data.id = 'inputform_' + i;
-  var parent = document.getElementById('form_area');
-  parent.appendChild(input_data);
-
-  var button_data = document.createElement('button');
-  button_data.id = i;
-  button_data.onclick = function(){deleteBtn(this);}
-  button_data.innerHTML = '削除';
-  var input_area = document.getElementById(input_data.id);
-  parent.appendChild(button_data);
-
-  i++ ;
-}
-
-function deleteBtn(target) {
-  var target_id = target.id;
-  var parent = document.getElementById('form_area');
-  var ipt_id = document.getElementById('inputform_' + target_id);
-  var tgt_id = document.getElementById(target_id);
-  parent.removeChild(ipt_id);
-  parent.removeChild(tgt_id);
-}
-</script>
