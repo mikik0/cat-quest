@@ -1,5 +1,5 @@
 class Quest < ApplicationRecord
-  has_many :user_quests
+  has_many :user_quests, dependent: :destroy
   has_many :contents, dependent: :destroy
 
   def current_quest?

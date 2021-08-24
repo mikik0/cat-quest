@@ -6,12 +6,12 @@ class ContentController < ApplicationController
   end
 
   def show
-	@memo = @content.memos
+	  @memo = @content.memos
   end
 
   def new
     @content = Content.new
-	@memo = Memo.new
+  	@memo = Memo.new
   end
 
   def create

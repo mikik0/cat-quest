@@ -39,7 +39,7 @@
     <div id="form_area">
       <%= form.text_field :youtube_url %>
       <% if @quest.persisted? %>
-        <%= youtube_url.check_box :_destroy, data:{ index: youtube_url.index }, class: "hidden-destroy" %>
+        <%# <%= youtube_url.check_box :_destroy, data:{ index: youtube_url.index }, class: "hidden-destroy" %> %>
       <% end %>
     </div>
     <input type="button" value="追加" onclick="addForm()">

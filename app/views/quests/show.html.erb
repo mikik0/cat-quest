@@ -40,5 +40,7 @@
     </tr>
   <% end %>
 
-<%= link_to 'Edit', edit_quest_path(@quest) %> |
+<% if current_user.owner?(@quest.id) %>
+  <%= link_to 'Edit', edit_quest_path(@quest) %> |
+<% end %>
 <%= link_to 'Back', quests_path %>

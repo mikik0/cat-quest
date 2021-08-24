@@ -9,13 +9,11 @@ Rails.application.routes.draw do
     post  'signup' => 'devise/registrations#create'
   end
 
-  resources :users, only: [:show] do
+  resources :users, only: [:show, :edit, :update] do
     resources :quests, only: [:index, :show, :edit, :update, :delete] do
       resources :content
     end
   end
-
-  resources :users, only: [:show, :edit, :update]
 
   resources :quests do
     resource :user_quests, only: [:create, :destroy]

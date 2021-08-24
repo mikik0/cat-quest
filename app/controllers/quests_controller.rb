@@ -1,5 +1,6 @@
 class QuestsController < ApplicationController
   before_action :set_quest, only: %i[ show edit update destroy ]
+  before_action :authenticate_owner!, only: %i[ edit update destroy]
 
   # GET /quests or /quests.json
   def index
@@ -23,9 +24,14 @@ class QuestsController < ApplicationController
   # POST /quests or /quests.json
   def create
     @quest = Quest.new(quest_params)
-
+    
     respond_to do |format|
       if @quest.save
+        #クエストを作成すると同時にそやつ自身もクエストに参加する
+        current_user.user_quests.create(
+          quest_id: @quest.id,
+          is_owner: true
+        )
         format.html { redirect_to @quest, notice: "Quest was successfully created." }
         format.json { render :show, status: :created, location: @quest }
       else
@@ -61,6 +67,12 @@ class QuestsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_quest
       @quest = Quest.find(params[:id])
+    end
+
+    def authenticate_owner!
+      unless current_user.owner?(@quest.id)
+        redirect_to user_path(current_user)
+      end
     end
 
     # Only allow a list of trusted parameters through.
