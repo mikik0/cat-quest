@@ -31,22 +31,15 @@
     <%= form.datetime_select :finished_at %>
   </div>
 
+  <div class="field">
   <%= form.fields_for :contents do |c| %>
-   <div class="js-file-group">
-     <div class="tag-area__title">
-      youtube_url
-     </div>
+      <%= c.label :youtube_url %>
     <div id="form_area">
       <%= c.text_field :youtube_url %>
-      <!--
-      <% if @quest.persisted? %>
-        <%#= youtube_url.check_box :_destroy, data:{ index: youtube_url.index }, class: "hidden-destroy" %>
-      <% end %>
-      -->
     </div>
     <input type="button" value="追加" onclick="addForm()">
-   </div>
   <% end %>
+  </div>
 
   <div class="actions">
     <%= form.submit %>
@@ -57,8 +50,7 @@
 var i = 1 ;
 
 function addForm() {
-  // var divElement = document.createElement("div");
-  // divElement.innerHTML = '<input type="text" maxlength="80">';
+
 
   var input_data = document.createElement('input');
   input_data.type = 'text';
