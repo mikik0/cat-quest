@@ -24,6 +24,11 @@ class User < ApplicationRecord
     return current_quest,past_quest
   end
 
+  def has_current_quest?
+    current_quest,past_quest = quest_time_sort
+    current_quest.present?
+  end
+
   # userがクエストのオーナーかどうか
   def owner?(quest_id)
     quest = user_quests.find_by(quest_id: quest_id) 
