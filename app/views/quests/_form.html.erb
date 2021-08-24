@@ -31,14 +31,13 @@
     <%= form.datetime_select :finished_at %>
   </div>
 
-
-   <%= form.fields_for @quest.contents do |content| %>
+   <%= form.fields_for :contents do |c| %>
    <div class="js-file-group">
      <div class="tag-area__title">
       youtube_url
      </div>
     <div id="form_area">
-      <%= form.text_field :youtube_url %>
+      <%= c.text_field :youtube_url %>
       <% if @quest.persisted? %>
         <%= youtube_url.check_box :_destroy, data:{ index: youtube_url.index }, class: "hidden-destroy" %>
       <% end %>
@@ -46,11 +45,6 @@
     <input type="button" value="追加" onclick="addForm()">
    </div>
 <% end %>
-
-  <div class="field">
-    <%= form.label :total_video_time %>
-    <%# 自動入力 %>
-  </div>
 
   <div class="actions">
     <%= form.submit %>
