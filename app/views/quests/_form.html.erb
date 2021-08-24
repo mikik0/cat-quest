@@ -33,13 +33,11 @@
 
   <div class="field">
   <%= form.fields_for :contents do |c| %>
-      <%= c.label :youtube_url %>
-    <div id="form_area">
-      <%= c.text_field :youtube_url %>
-    </div>
+    <%= c.label :youtube_url %>
+    <%= c.text_field :youtube_url %>
   <% end %>
   </div>
-  <%= form.link_to_add "追加", :contents %>
+  <%= form.link_to_add "リンク追加", :contents %>
   <div class="actions">
     <%= form.submit %>
   </div>
