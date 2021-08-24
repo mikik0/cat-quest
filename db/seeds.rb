@@ -30,7 +30,8 @@ Character.create(
   UserQuest.create(
     user_id:  1,
     quest_id: n + 1,
-    is_finished: false
+    is_finished: false,
+    is_owner: true
   )
   
 end
@@ -45,5 +46,6 @@ end
   UserQuest.create(
     user_id:  1,
     quest_id: 6,
-    is_finished: false
+    is_finished: false,
+    is_owner:false
   )

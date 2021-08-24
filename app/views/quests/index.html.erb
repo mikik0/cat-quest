@@ -23,8 +23,10 @@
         <td><%= quest.strated_at %></td>
         <td><%= quest.finished_at %></td>
         <td><%= link_to 'Show', quest %></td>
-        <td><%= link_to 'Edit', edit_quest_path(quest) %></td>
-        <td><%= link_to 'Destroy', quest, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if current_user.owner?(quest.id) %>
+          <td><%= link_to 'Edit', edit_quest_path(quest) %></td>
+          <td><%= link_to 'Destroy', quest, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
