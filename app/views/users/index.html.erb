@@ -1,15 +1,14 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Quests</h1>
+<h1>受注中クエスト一覧</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>total_video_time</th>
-      <th>strated_at</th>
-      <th>finished_at</th>
+      <th>タイトル</th>
+      <th>詳細</th>
+      <th>開始日</th>
+      <th>終了日</th>
       <th colspan="5"></th>
     </tr>
   </thead>
@@ -19,13 +18,12 @@
       <tr>
         <td><%= quest.title %></td>
         <td><%= quest.description %></td>
-        <td><%= quest.total_video_time %></td>
         <td><%= quest.strated_at %></td>
         <td><%= quest.finished_at %></td>
-        <td><%= link_to 'Show', quest %></td>
+        <td><%= link_to '確認', quest %></td>
         <% if current_user.owner?(quest.id) %>
-          <td><%= link_to 'Edit', edit_quest_path(quest) %></td>
-          <td><%= link_to 'Destroy', quest, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to '編集', edit_quest_path(quest) %></td>
+          <td><%= link_to '削除', quest, method: :delete, data: { confirm: '本当に削除しますか？' } %></td>
         <% end %>
       </tr>
     <% end %>
@@ -34,4 +32,4 @@
 
 <br>
 
-<%= link_to 'New Quest', new_quest_path %>
+<%= link_to 'クエスト作成', new_quest_path %>
