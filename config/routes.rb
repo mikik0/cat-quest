@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :myquests, only: [:index], controller: :users do
     resources :content, only: [:show] do
       resources :memos, only: [:create, :destroy]
+      resources :user_contents, only: [:create]
     end
   end
 

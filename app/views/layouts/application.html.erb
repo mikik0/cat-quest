@@ -50,6 +50,35 @@
           <li class="my-px"></li>
           <li class="my-px">
             <a
+              href="/myquests"
+              class="flex flex-row items-center h-10 px-3 rounded-lg text-gray-300 hover:bg-gray-100 hover:text-gray-700"
+            >
+              <span class="flex items-center justify-center text-lg text-gray-400">
+                <svg
+                  fill="none"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  <% if current_user.has_current_quest? %>
+                    class="h-6 w-6 text-red-500"
+                  <% else %>
+                    class="h-6 w-6 text-gray-500"
+                  <% end %>
+                >
+                  <path stroke="none" d="M0 0h24v24H0z"/>
+                  <circle cx="9" cy="7" r="4" />
+                  <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+                  <path d="M16 11l2 2l4 -4" />
+                </svg>
+              </span>
+              <span class="ml-3">MyQuests</span>
+            </a>
+          </li>
+          <li class="my-px"></li>
+          <li class="my-px">
+            <a
               href="/quests"
               class="flex flex-row items-center h-10 px-3 rounded-lg text-gray-300 hover:bg-gray-100 hover:text-gray-700"
             >
