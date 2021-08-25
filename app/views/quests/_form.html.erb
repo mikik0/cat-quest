@@ -1,45 +1,57 @@
-<%= nested_form_for(@quest) do |form| %>
-  <% if quest.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(quest.errors.count, "error") %> prohibited this quest from being saved:</h2>
+<div class="bg-white min-h-screen pt-2 font-mono my-16">
+  <div class="container mx-auto">
+      <div class="inputs w-full max-w-2xl p-6 mx-auto">
+          <h2 class="text-2xl text-gray-900">クエスト作成</h2>
+              <div class='flex flex-wrap -mx-3 mb-6'>
+                  <div class='w-full md:w-full px-3 mb-6'>
+                        <%= nested_form_for(@quest) do |form| %>
+                        <% if quest.errors.any? %>
+                            <div id="error_explanation">
+                              <h2><%= pluralize(quest.errors.count, "error") %> prohibited this quest from being saved:</h2>
 
-      <ul>
-      <% quest.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+                              <ul>
+                              <% quest.errors.full_messages.each do |message| %>
+                                <li><%= message %></li>
+                              <% end %>
+                              </ul>
+                            </div>
+                          <% end %>
+
+                          <div class="field">
+                            <%= form.label :タイトル %>
+                            <%= form.text_field :title, :class=> 'appearance-none block w-full bg-white text-gray-700 border border-gray-400 shadow-inner rounded-md py-3 px-4 leading-tight focus:outline-none  focus:border-gray-500'%>
+                          </div>
+
+                          <div class="field">
+                            <%= form.label :詳細 %>
+                            <%= form.text_field :description, :class => 'bg-white rounded-md border leading-normal resize-none w-full h-20 py-2 px-3 shadow-inner border border-gray-400 font-medium placeholder-gray-700 focus:outline-none focus:bg-white' %>
+                          </div>
+
+                          <div class="field">
+                            <%= form.label :開始日 %>
+                            <%= form.datetime_select :strated_at %>
+                          </div>
+
+                          <div class="field">
+                            <%= form.label :締め切り %>
+                            <%= form.datetime_select :finished_at %>
+                          </div>
+
+                          <div class="field">
+                          <%= form.fields_for :contents do |c| %>
+                            <%= c.label :youtube_url %>
+                            <%= c.text_field :youtube_url, :class=> 'appearance-none block w-full bg-white text-gray-700 border border-gray-400 shadow-inner rounded-md py-3 px-4 leading-tight focus:outline-none  focus:border-gray-500' %>
+                            <%= c.link_to_remove "削除" %>
+                          <% end %>
+                          </div>
+                          <%= form.link_to_add "リンク追加", :contents %>
+                          <div class="actions">
+                            <%= form.submit :class=>"appearance-none bg-gray-200 text-gray-900 px-2 py-1 shadow-sm border border-gray-400 rounded-md mr-3" %>
+                          </div>
+                        <% end %>
+                      <%= link_to '戻る', quests_path %>
+                  </div>
+              </div>
+        </div>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
-
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_field :description %>
-  </div>
-
-  <div class="field">
-    <%= form.label :strated_at %>
-    <%= form.datetime_select :strated_at %>
-  </div>
-
-  <div class="field">
-    <%= form.label :finished_at %>
-    <%= form.datetime_select :finished_at %>
-  </div>
-
-  <div class="field">
-  <%= form.fields_for :contents do |c| %>
-    <%= c.label :youtube_url %>
-    <%= c.text_field :youtube_url %>
-    <%= c.link_to_remove "削除" %>
-  <% end %>
-  </div>
-  <%= form.link_to_add "リンク追加", :contents %>
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

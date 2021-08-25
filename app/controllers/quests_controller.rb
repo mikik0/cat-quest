@@ -9,6 +9,7 @@ class QuestsController < ApplicationController
 
   # GET /quests/1 or /quests/1.json
   def show
+    @quests = Quest.all
   end
 
   # GET /quests/new

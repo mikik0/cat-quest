@@ -1,26 +1,21 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Title:</strong>
+  <strong>タイトル:</strong>
   <%= @quest.title %>
 </p>
 
 <p>
-  <strong>Description:</strong>
+  <strong>詳細:</strong>
   <%= @quest.description %>
 </p>
 
 <p>
-  <strong>total_video_time:</strong>
-  <%= @quest.total_video_time %>
-</p>
-
-<p>
-  <strong>strated_at:</strong>
+  <strong>開始日:</strong>
   <%= @quest.strated_at %>
 </p>
 
-  <strong>finished_at:</strong>
+  <strong>終了日:</strong>
   <%= @quest.finished_at %>
 </p>
 <%# 参加するボタンをつける %>
@@ -32,15 +27,30 @@
   <% end %>
 </p>
 
-サムネイル
+<% if @quest.user_questsed_by?(current_user) %>
+<%# もしクエスト受注中ならばサムネイルがリンク化される。 %>
+<p>クエスト動画一覧</p>
+  <% @quests.each do |quest| %>
+    <% quest.contents.each do |content| %>
+      <tr>
+        <%= link_to myquest_content_path(quest, content), target: :_blank do %>
+          <img class="lazyloaded" src="https://img.youtube.com/vi/<%= content.youtube_url.gsub("https://www.youtube.com/watch?v=","") %>/hqdefault.jpg">
+        <% end %>
+        <td><%= content.youtube_url %></td>
+      </tr>
+    <% end %>
+  <% end %>
+<% else %>
   <% @quest.contents.each do |content| %>
     <tr>
-      <td><%= content.youtube_url %></td>
         <img class="lazyloaded" src="https://img.youtube.com/vi/<%= content.youtube_url.gsub("https://www.youtube.com/watch?v=","") %>/hqdefault.jpg">
+        <td><%= content.youtube_url %></td>
     </tr>
   <% end %>
-
-<% if current_user.owner?(@quest.id) %>
-  <%= link_to 'Edit', edit_quest_path(@quest) %> |
 <% end %>
-<%= link_to 'Back', quests_path %>
+<div>
+<% if current_user.owner?(@quest.id) %>
+  <%= link_to '編集', edit_quest_path(@quest) %> |
+<% end %>
+<%= link_to '戻る', quests_path %>
+</div>
