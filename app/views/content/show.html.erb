@@ -77,14 +77,13 @@
             if (player.getCurrentTime() >= player.getDuration() - 60) {
                 console.log("おわり！");
                 $.ajax({
-                    url: '<%= myquest_content_done_index_path %>',
+                    url: '<%= myquest_content_user_contents_path(@quest,@content)%>',
                     type: 'POST',
                     data: {
-                        time: document.getElementById('time').value,
+                        video_time: document.getElementById('time').value
                         //経過時間を渡したい。
-                        id: "<%= @content.id %>"
-                    },
-                }
+                    }
+                });
                 done = true;
             }
         }

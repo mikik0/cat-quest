@@ -6,10 +6,11 @@ class ContentController < ApplicationController
   end
 
   def show
-	@memo = @content.memos
+    @memos = @content.memos
     @quest = Quest.find(params[:myquest_id])
     @content = Content.find(params[:id])
     @memo = Memo.new
+    @user_content = UserContent.new
   end
 
   def new
