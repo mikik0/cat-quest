@@ -18,21 +18,18 @@
 
 <%# メモ機能 %>
 <p>メモ機能</p>
-<%= form_with model:[@quest,@content,@memo], url: myquest_content_memos_path(@quest,@content) , data: {remote: true} do |f| %>
-    <div>
-        <%= f.label :本文 %>
-        <%= f.text_field :text, autofocus: true, id: "text" %>
-    </div>
-    <div><%= f.submit "投稿する" %></div>
+<%= form_with model:[@quest,@content,@memo], url: myquest_content_memos_path(@quest,@content) do |f| %>
+	<div>
+		<%= f.label :本文 %>
+		<%= f.text_field :text, autofocus: true, id: "text" %>
+	</div>
+	<div><%= f.submit "投稿する" %></div>
 <% end %>
 
 <p>メモ一覧</p>
-<% @content.memos.each do |memo| %>
-    <tr>
-        <td><%= memo.id %></td>
-        <td><%= memo.text %></td>
-    </tr>
-<% end %>
+<div class="memo__table">
+		<%= render 'memos', content: @content %>
+</div>
 
 <script>
     // API読み込み
