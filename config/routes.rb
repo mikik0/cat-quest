@@ -12,8 +12,9 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :edit, :update]
 
   resources :myquests, only: [:index], controller: :users do
-    resources :contents, only: [:show] do
+    resources :content, only: [:show] do
       resources :memos, only: [:create, :destroy]
+      resources :user_contents, only: [:create]
     end
   end
 

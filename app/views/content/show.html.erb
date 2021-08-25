@@ -18,7 +18,7 @@
 
 <%# メモ機能 %>
 <p>メモ機能</p>
-<%= form_with model:[@memo], url: create_user_quest_content_path, data: {remote: true} do |f| %>
+<%= form_with model:[@quest,@content,@memo], url: myquest_content_memos_path(@quest,@content) , data: {remote: true} do |f| %>
     <div>
         <%= f.label :本文 %>
         <%= f.text_field :text, autofocus: true, id: "text" %>
@@ -75,7 +75,20 @@
 
         if (done == false) {
             if (player.getCurrentTime() >= player.getDuration() - 60) {
-                console.log("おわり！");
+                console.log("視聴終了");
+                $.ajax(
+                    {
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest',
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                    },
+                    url: '<%= myquest_content_user_contents_path(@quest,@content)%>',
+                    type: 'POST',
+                    data: {
+                        user_contents: { video_time: document.getElementById('time').value }
+                        //動画の時間をわたす。
+                    }
+                });
                 done = true;
             }
         }
