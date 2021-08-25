@@ -9,14 +9,11 @@ Rails.application.routes.draw do
     post  'signup' => 'devise/registrations#create'
   end
 
-  resources :users, only: [:show] do
-    resources :quests, only: [:index, :show, :edit, :update, :delete] do
-      resources :content, only: [:index, :show]
+  resources :users, only: [:show, :edit, :update]
+
+  resources :myquests, only: [:index], controller: :users do
+    resources :contents, only: [:show] do
+      resources :memos, only: [:create, :destroy]
     end
   end
-
-  resources :users, only: [:show, :edit, :update]
-  resources :quests
-
-  get 'tags', to: 'tags#index'
 end

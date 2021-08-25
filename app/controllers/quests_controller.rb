@@ -1,5 +1,6 @@
 class QuestsController < ApplicationController
   before_action :set_quest, only: %i[ show edit update destroy ]
+  before_action :authenticate_owner!, only: %i[ edit update destroy]
 
   # GET /quests or /quests.json
   def index
@@ -13,19 +14,20 @@ class QuestsController < ApplicationController
   # GET /quests/new
   def new
     @quest = Quest.new
-    # @youtube_url = @quest.youtube_url.new
-  end
-
-  # GET /quests/1/edit
-  def edit
+    @quest.contents.build
   end
 
   # POST /quests or /quests.json
   def create
-    @quest = Quest.new(quest_params)
+    @quest = Quest.create(quest_params)
 
     respond_to do |format|
       if @quest.save
+        #クエストを作成すると同時にそやつ自身もクエストに参加する
+        current_user.user_quests.create(
+          quest_id: @quest.id,
+          is_owner: true
+        )
         format.html { redirect_to @quest, notice: "Quest was successfully created." }
         format.json { render :show, status: :created, location: @quest }
       else
@@ -33,6 +35,10 @@ class QuestsController < ApplicationController
         format.json { render json: @quest.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  # GET /quests/1/edit
+  def edit
   end
 
   # PATCH/PUT /quests/1 or /quests/1.json
@@ -63,8 +69,21 @@ class QuestsController < ApplicationController
       @quest = Quest.find(params[:id])
     end
 
+    def authenticate_owner!
+      unless current_user.owner?(@quest.id)
+        redirect_to user_path(current_user)
+      end
+    end
+
     # Only allow a list of trusted parameters through.
     def quest_params
-      params.require(:quest).permit(:title, :description, :total_video_time, :strated_at, :finished_at, contents_attributes: [:youtube_url, :_destroy, :id])
+      params.require(:quest).permit(
+        :title,
+        :description,
+        :total_video_time,
+        :strated_at,
+        :finished_at,
+        contents_attributes: [:id, :youtube_url, :_destroy]
+      )
     end
 end
