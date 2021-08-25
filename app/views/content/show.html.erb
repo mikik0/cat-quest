@@ -75,13 +75,18 @@
 
         if (done == false) {
             if (player.getCurrentTime() >= player.getDuration() - 60) {
-                console.log("おわり！");
-                $.ajax({
+                console.log("視聴終了");
+                $.ajax(
+                    {
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest',
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                    },
                     url: '<%= myquest_content_user_contents_path(@quest,@content)%>',
                     type: 'POST',
                     data: {
-                        video_time: document.getElementById('time').value
-                        //経過時間を渡したい。
+                        user_contents: { video_time: document.getElementById('time').value }
+                        //動画の時間をわたす。
                     }
                 });
                 done = true;
