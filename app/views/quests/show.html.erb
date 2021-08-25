@@ -32,13 +32,25 @@
   <% end %>
 </p>
 
-サムネイル
+<% if @quest.user_questsed_by?(current_user) %>
+  <% @quests.each do |quest| %>
+    <% quest.contents.each do |content| %>
+      <tr>
+        <td><%= content.youtube_url %></td>
+        <%= link_to myquest_content_path(quest, content), target: :_blank do %>
+          <img class="lazyloaded" src="https://img.youtube.com/vi/<%= content.youtube_url.gsub("https://www.youtube.com/watch?v=","") %>/hqdefault.jpg">
+        <% end %>
+      </tr>
+    <% end %>
+  <% end %>
+<% else %>
   <% @quest.contents.each do |content| %>
     <tr>
       <td><%= content.youtube_url %></td>
         <img class="lazyloaded" src="https://img.youtube.com/vi/<%= content.youtube_url.gsub("https://www.youtube.com/watch?v=","") %>/hqdefault.jpg">
     </tr>
   <% end %>
+<% end %>
 
 <% if current_user.owner?(@quest.id) %>
   <%= link_to 'Edit', edit_quest_path(@quest) %> |
