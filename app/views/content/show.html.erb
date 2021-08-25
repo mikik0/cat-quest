@@ -18,7 +18,7 @@
 
 <%# メモ機能 %>
 <p>メモ機能</p>
-<%= form_with model:[@memo], url: create_user_quest_content_path, data: {remote: true} do |f| %>
+<%= form_with model:[@quest,@content,@memo], url: myquest_content_memos_path(@quest,@content) , data: {remote: true} do |f| %>
     <div>
         <%= f.label :本文 %>
         <%= f.text_field :text, autofocus: true, id: "text" %>

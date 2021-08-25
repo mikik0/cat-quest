@@ -26,7 +26,6 @@ ActiveRecord::Schema.define(version: 2021_08_20_050728) do
   create_table "contents", force: :cascade do |t|
     t.bigint "quest_id"
     t.string "youtube_url"
-    t.string "video_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["quest_id"], name: "index_contents_on_quest_id"
@@ -97,6 +96,7 @@ ActiveRecord::Schema.define(version: 2021_08_20_050728) do
   create_table "user_contents", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "content_id"
+    t.integer "video_time"
     t.boolean "is_finished", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
