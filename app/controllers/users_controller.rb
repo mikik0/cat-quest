@@ -2,7 +2,9 @@ class UsersController < ApplicationController
   before_action :authenticate_user!  
 
   def show
-    @quests = Quest.all
+    @user = current_user
+    @character = @user.character
+    @current_quest,@past_quest = @user.quest_time_sort
   end
 
   def edit
@@ -10,4 +12,11 @@ class UsersController < ApplicationController
 
   def update
   end
+
+  # myquest一覧画面
+  def index
+    @quests = current_user.quests
+  end
+
+  private
 end
