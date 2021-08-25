@@ -9,7 +9,7 @@
 <div id="status" style="border:solid 1px #ccc;height: 20px; width: 400px; background-color:#eee;"></div>
 <br />
 <div>再生開始からの経過時間</div>
-<div id="time" style="border:solid 1px #ccc;height: 20px; width: 400px; background-color:#eee;"></div>
+<div id="time1" style="border:solid 1px #ccc;height: 20px; width: 400px; background-color:#eee;"></div>
 <div>動画の時間</div>
 <div id="duration" style="border:solid 1px #ccc;height: 20px; width: 400px; background-color:#eee;"></div>
 
@@ -20,7 +20,7 @@
     <div>
         <%= f.label :本文 %>
         <%= f.text_field :text, autofocus: true, id: "text" %>
-        <%= f.hidden_field :time, :value => 'time' %>
+        <%= f.hidden_field :time, value: 'time', id: :time %>
     </div>
     <div><%= f.submit "投稿する" %></div>
 <% end %>
@@ -65,7 +65,7 @@
         };
         document.getElementById('status').innerHTML = names[status];
         var time = player.getCurrentTime();
-        document.getElementById('time').innerHTML = time + '秒';
+        document.getElementById('time1').innerHTML = time + '秒';
         document.getElementById('time').value = player.getCurrentTime();
 
 
