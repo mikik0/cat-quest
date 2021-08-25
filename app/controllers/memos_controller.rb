@@ -8,6 +8,7 @@ class MemosController < ApplicationController
     end
 
     def destroy
+        @quest = Quest.find(params[:myquest_id])
         @memo = Memo.find(params[:id])
         @content = @memo.content
         @memo.destroy
