@@ -1,3 +1,15 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.parent {
+  overflow: hidden;
+  margin-right: -20px;
+}
+.child1,
+.child2 {
+  float: left;
+  margin-right: 20px;
+}
+.child2 {
+  width: 300px;
+}

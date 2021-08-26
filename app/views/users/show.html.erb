@@ -1,35 +1,38 @@
-<div>
-  現在のキャラ状況:
+<div  class="parent">
+<div class="child1">
+  <p class="text-lg">現在のキャラ状況:</p>
   <img src="http://placehold.it/150x150">
-  <p><%= @user.name %></p>
-  <p><%= @user.introduction %></p>
+  <p class="text-lg"><%= @user.name %></p>
+  <p class="text-lg"><%= @user.introduction %></p>
   <%= link_to "edit profile",edit_user_path %>
-  <p> Lv.<%= @character.level %>  <% @character.name %></p>
-  <p>総獲得ねこ缶: <%= @user.total_nekokan %></p>
+  <p class="text-lg"> Lv.<%= @character.level %>  <% @character.name %></p>
+  <p class="text-lg">総獲得ねこ缶: <%= @user.total_nekokan %></p>
 </div>
 
-<div>
-<h1>現在のクエスト</h1>
-  <% if @current_quest.empty? %>
-    <p>現在受注中のクエストはありません</p>
-  <% else%>
-    <% @current_quest.each do |quest| %>
-      <p><%= link_to quest.title, quest_path(quest) %></p>
-      <% end %>
-  <% end %>
-</div>
-
-<div>
-<h1>過去のクエスト</h1>
-  <% if @past_quest.empty? %>
-    <p>完了済みのクエストはありません</p>
-  <% else%>
-    <% @past_quest.each do |quest| %>
-      <p><%= link_to quest.title, quest_path(quest) %></p>
+<div class="child2">
+  <div>
+    <h1 class="text-lg">現在のクエスト</h1>
+    <% if @current_quest.empty? %>
+      <p>現在受注中のクエストはありません</p>
+    <% else%>
+      <% @current_quest.each do |quest| %>
+        <p class="text-lg"><%= link_to quest.title, quest_path(quest) %></p>
+        <% end %>
     <% end %>
-  <% end %>
-</div>
+  </div>
 
+  <div>
+    <h1 class="text-lg">過去のクエスト</h1>
+    <% if @past_quest.empty? %>
+      <p>完了済みのクエストはありません</p>
+    <% else%>
+      <% @past_quest.each do |quest| %>
+        <p class="text-lg"><%= link_to quest.title, quest_path(quest) %></p>
+      <% end %>
+    <% end %>
+  </div>
+  </div>
+</div>
 <div>
   <img src="http://placehold.it/450x150">
 </div>
