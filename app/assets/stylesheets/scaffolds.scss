@@ -78,3 +78,16 @@ div {
 label {
   display: block;
 }
+
+.sidebar{
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 200;
+  height: 100vh;
+}
+
+main{
+  margin-left: 300px;
+  width: calc(100% - 300px);
+}
