@@ -30,18 +30,16 @@
 <% if @quest.user_questsed_by?(current_user) %>
 <%# もしクエスト受注中ならばサムネイルがリンク化される。 %>
 <p>クエスト動画一覧</p>
-  <% @quests.each do |quest| %>
-    <% quest.contents.each do |content| %>
-      <tr>
-        <%= link_to myquest_content_path(quest, content), target: :_blank do %>
-          <img class="lazyloaded" src="https://img.youtube.com/vi/<%= content.youtube_url.gsub("https://www.youtube.com/watch?v=","") %>/hqdefault.jpg">
-        <% end %>
-        <td><%= content.youtube_url %></td>
-      </tr>
-    <% end %>
+  <% @contents.each do |content| %>
+    <tr>
+      <%= link_to myquest_content_path(@quest, content), target: :_blank do %>
+        <img class="lazyloaded" src="https://img.youtube.com/vi/<%= content.youtube_url.gsub("https://www.youtube.com/watch?v=","") %>/hqdefault.jpg">
+      <% end %>
+      <td><%= content.youtube_url %></td>
+    </tr>
   <% end %>
 <% else %>
-  <% @quest.contents.each do |content| %>
+  <% @contents.each do |content| %>
     <tr>
         <img class="lazyloaded" src="https://img.youtube.com/vi/<%= content.youtube_url.gsub("https://www.youtube.com/watch?v=","") %>/hqdefault.jpg">
         <td><%= content.youtube_url %></td>
