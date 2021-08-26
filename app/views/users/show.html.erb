@@ -1,35 +1,64 @@
-<div>
-  現在のキャラ状況:
+<div  class="parent">
+<div class="child1">
+  <p class="skm text-lg">現在のキャラ状況:</p>
   <img src="http://placehold.it/150x150">
-  <p><%= @user.name %></p>
-  <p><%= @user.introduction %></p>
+  <p class="skm text-lg"><%= @user.name %></p>
+  <p class="skm text-lg"><%= @user.introduction %></p>
   <%= link_to "edit profile",edit_user_path %>
-  <p> Lv.<%= @character.level %>  <% @character.name %></p>
-  <p>総獲得ねこ缶: <%= @user.total_nekokan %></p>
+  <p class="skm text-lg"> Lv.<%= @character.level %>  <% @character.name %></p>
+  <p class="skm text-lg">総獲得ねこ缶: <%= @user.total_nekokan %></p>
 </div>
 
-<div>
-<h1>現在のクエスト</h1>
-  <% if @current_quest.empty? %>
-    <p>現在受注中のクエストはありません</p>
-  <% else%>
-    <% @current_quest.each do |quest| %>
-      <p><%= link_to quest.title, quest_path(quest) %></p>
-      <% end %>
-  <% end %>
-</div>
-
-<div>
-<h1>過去のクエスト</h1>
-  <% if @past_quest.empty? %>
-    <p>完了済みのクエストはありません</p>
-  <% else%>
-    <% @past_quest.each do |quest| %>
-      <p><%= link_to quest.title, quest_path(quest) %></p>
+<div class="child2">
+  <div class="now">
+    <h1 class="skm text-lg">現在のクエスト</h1>
+    <% if @current_quest.empty? %>
+      <p>現在受注中のクエストはありません</p>
+    <% else%>
+    <table>
+      <thead>
+          <tr>
+            <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-200 rounded-tl rounded-bl">タイトル</th>
+            <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-200">終了日</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @current_quest.each do |quest| %>
+          <tr>
+            <td class="px-4 py-3 text-lg text-gray-900"><%= link_to quest.title, quest_path(quest) %></td>
+            <td class="px-4 py-3 text-lg text-gray-900"><%= link_to quest.finished_at.strftime("%Y-%m-%d %H:%M") , quest_path(quest) %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
     <% end %>
-  <% end %>
-</div>
+  </div>
 
+  <div class="past">
+    <h1 class="skm text-lg">過去のクエスト</h1>
+    <% if @past_quest.empty? %>
+      <p>完了済みのクエストはありません</p>
+    <% else%>
+      <table>
+        <thead>
+          <tr>
+            <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-200 rounded-tl rounded-bl">タイトル</th>
+            <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-200">終了日</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @past_quest.each do |quest| %>
+          <tr>
+            <td class="px-4 py-3 text-lg text-gray-900"><%= link_to quest.title, quest_path(quest) %></td>
+            <td class="px-4 py-3 text-lg text-gray-900"><%= link_to quest.finished_at.strftime("%Y-%m-%d %H:%M") , quest_path(quest) %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
+   </div>
+  </div>
+</div>
 <div>
   <img src="http://placehold.it/450x150">
 </div>

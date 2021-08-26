@@ -1,6 +1,23 @@
-<div id="ytplayer"></div>
+<section class="hoge">
+    <div class="player">
+      <div id="ytplayer"></div>
+    </div><div class="memo">
+      <%# メモ機能 %>
+      <p>メモ一覧</p>
+      <div class="memo__table">
+        <%= render 'memos', content: @content %>
+      </div>
+    </div>
+</section>
 
-<br />
+<%= form_with model:[@quest,@content,@memo], url: myquest_content_memos_path(@quest,@content) do |f| %>
+    <div>
+        <%= f.label :メモを残そう！ %>
+        <%= f.text_area :text, autofocus: true, id: "text", :size=>"80x5", :class => 'bg-white rounded-md border leading-normal resize-none w-full h-20 py-2 px-3 shadow-inner border border-gray-400 font-medium placeholder-gray-700 focus:outline-none focus:bg-white' %>
+        <%= f.hidden_field :time, value: 'time', id: :time %>
+    </div>
+    <div><%= f.submit "投稿する", :class=>"appearance-none bg-gray-200 text-gray-900 px-2 py-1 shadow-sm border border-gray-400 rounded-md mr-3" %></div>
+<% end %>
 <!--
 <div>バッファ済みの動画の割合</div>
 <div>※停止中のバッファは反映されない模様</div>
@@ -14,22 +31,6 @@
 <div>動画の時間</div>
 <div id="duration" style="border:solid 1px #ccc;height: 20px; width: 400px; background-color:#eee;"></div>
 -->
-
-<%# メモ機能 %>
-<p>メモ機能</p>
-<%= form_with model:[@quest,@content,@memo], url: myquest_content_memos_path(@quest,@content) do |f| %>
-    <div>
-        <%= f.label :本文 %>
-        <%= f.text_field :text, autofocus: true, id: "text" %>
-        <%= f.hidden_field :time, value: 'time', id: :time %>
-    </div>
-    <div><%= f.submit "投稿する" %></div>
-<% end %>
-
-<p>メモ一覧</p>
-<div class="memo__table">
-    <%= render 'memos', content: @content %>
-</div>
 
 <script>
     // API読み込み
