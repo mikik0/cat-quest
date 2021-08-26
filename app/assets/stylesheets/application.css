@@ -131,7 +131,7 @@ h2{
   margin:0 auto;
 }
 
-@media (max-width: 750px) {
+@media (max-width: 768px) {
 
 .pc {
   display: none;
