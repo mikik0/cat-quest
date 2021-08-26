@@ -94,14 +94,14 @@ main{
   width: calc(100% - 300px);
 }
 
-.player, .child2{
+.player{
   display: inline-block;
   width: 800px;
   height: 600px;
   margin-right: 30px;
 }
 
-.memo, .child1{
+.memo{
   display: inline-block;
   width: calc(100% - 830px);
   height: 600px;

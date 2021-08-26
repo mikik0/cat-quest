@@ -10,6 +10,17 @@
   float: left;
   margin-right: 20px;
 }
-.child2 {
-  width: 300px;
+
+.child1{
+  display: inline-block;
+  width: calc(100% - 830px);
+  height: 600px;
+  vertical-align: top;
+}
+
+.child2{
+  display: inline-block;
+  width: 700px;
+  height: 600px;
+  margin-right: 30px;
 }
