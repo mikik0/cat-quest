@@ -7,7 +7,10 @@ body {
   line-height: 18px;
 }
 
-p, ol, ul, td {
+ol,
+p,
+td,
+ul {
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
@@ -25,7 +28,6 @@ a {
   &:visited {
     color: #666;
   }
-
 }
 
 th {
@@ -37,7 +39,8 @@ td {
 }
 
 div {
-  &.field, &.actions {
+  &.actions,
+  &.field {
     margin-bottom: 10px;
   }
 }
@@ -79,47 +82,47 @@ label {
   display: block;
 }
 
-.sidebar{
+.sidebar {
   left: 0;
   top: 0;
   z-index: 200;
   height: 100vh;
 }
 
-.player{
+.player {
   display: inline-block;
   width: 800px;
   height: 600px;
   margin-right: 30px;
 }
 
-.memo{
+.memo {
   display: inline-block;
   width: calc(100% - 830px);
   height: 600px;
   vertical-align: top;
 }
-
 @media screen and (max-width: 1100) {
   .player {
     display: block;
     width: 100%;
   }
+
   .memo {
     display: block;
     width: 100%;
   }
 }
 
-.hoge{
+.hoge {
   display: block;
   width: 100%;
 }
 
-.skm{
+.skm {
   margin: 15px;
 }
 
-.now{
+.now {
   margin-bottom: 30px;
 }
