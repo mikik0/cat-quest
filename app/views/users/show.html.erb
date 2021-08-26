@@ -5,7 +5,9 @@
       <img src="http://placehold.it/150x150">
       <p class="skm text-lg"><%= @user.name %></p>
       <p class="skm text-lg"><%= @user.introduction %></p>
-      <%= link_to "edit profile",edit_user_path %>
+      <button class="bg-yellow-500 hover:bg-yellow-700 text-white py-2 px-4 rounded-full">
+        <%= link_to "編集",edit_user_path %>
+      </button>
       <p class="skm text-lg">
         Lv.<%= @character.level %>
         <% @character.name %>
