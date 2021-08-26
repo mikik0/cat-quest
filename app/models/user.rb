@@ -10,6 +10,8 @@ class User < ApplicationRecord
   has_many :quests, through: :user_quests
   has_many :user_contents
   has_many :nekokans
+  has_many :memos
+
 
   # userが持っているクエストを現在のものと終わっているものに分けるメソッド
   def quest_time_sort
