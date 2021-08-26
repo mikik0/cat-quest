@@ -4,7 +4,7 @@
   <p><%= @user.name %></p>
   <p><%= @user.introduction %></p>
   <%= link_to "edit profile",edit_user_path %>
-  <p> Lv.<%= @character.level %>  <% @character.name %></p>
+  <p> Lv.<%= @user.current_level %>  <% @character.name %></p>
   <p>総獲得ねこ缶: <%= @user.total_nekokan %></p>
 </div>
 

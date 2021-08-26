@@ -7,27 +7,46 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-Character.create(
-  level: 1,
-  name: "初心者ねこ"
-)
+  [
+    [ 1, '初心者ねこ'],
+    [ 1, '若葉ねこ' ],
+    [ 5, '大人ねこ'],
+  ].each do |level, name|
+    Character.create!(
+      { level: level, name: name }
+    )
+  end
 
-5.times do |n|
-  User.create(
-    name: "テスト#{n + 1}",
+  [
+    [ 1, 0],
+    [ 2, 7],
+    [ 3, 14],
+    [ 4, 21],
+    [ 5, 28],
+    [ 6, 36],
+  ].each do |level, threshold|
+    LevelThreshold.create!(
+      { level: level, threshold: threshold }
+    )
+  end
+
+3.times do |n|
+  User.create!(
+    name: "test#{n + 1}",
     introduction: "テストデータ#{n + 1}です",
     total_nekokan: n * 5,
     character_id: 1,
     password: "password"
   )
 
-  Quest.create(
+  Quest.create!(
     title: "ダミークエスト#{n + 1}",
     description: "ダミーのクエスト#{n + 1}です",
-    finished_at: Time.current
+    finished_at: Time.now
   )
 
-  UserQuest.create(
+  
+  UserQuest.create!(
     user_id:  1,
     quest_id: n + 1,
     is_finished: false,
@@ -36,16 +55,27 @@ Character.create(
   
 end
 
-  quest = Quest.create(
-    title: "ダミークエスト6",
-    description: "ダミーのクエスト6です",
-    #10日先の期限
-    finished_at: Time.current+ 10* 24 * 60 * 60
-  )
+quest = Quest.create!(
+  title: "ダミークエスト4",
+  description: "ダミーのクエスト4です",
+  #10日先の期限
+  finished_at: Time.now+ 10* 24 * 60 * 60
+)
 
-  UserQuest.create(
-    user_id:  1,
-    quest_id: 6,
-    is_finished: false,
-    is_owner:false
-  )
+UserQuest.create!(
+  user_id:  1,
+  quest_id: 4,
+  is_finished: false,
+  is_owner:false
+)
+
+Content.create!(
+  quest_id: 1,
+  youtube_url: "https://www.youtube.com/watch?v=bQW1SYFAc2Q"
+)
+
+UserContent.create!(
+  user_id: 1,
+  content_id: 1
+)
+
