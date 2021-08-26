@@ -94,16 +94,17 @@ main{
   width: calc(100% - 300px);
 }
 
-.player{
+.player, .child2{
   display: inline-block;
   width: 800px;
-  height: 450px;
+  height: 600px;
+  margin-right: 30px;
 }
 
-.memo{
+.memo, .child1{
   display: inline-block;
-  width: calc(100% - 800px);
-  height: 450px;
+  width: calc(100% - 830px);
+  height: 600px;
   vertical-align: top;
 }
 
@@ -121,4 +122,12 @@ main{
 .hoge{
   display: block;
   width: 100%;
+}
+
+.skm{
+  margin: 15px;
+}
+
+.now{
+  margin-bottom: 30px;
 }
