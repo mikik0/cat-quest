@@ -92,27 +92,15 @@ label {
 .player {
   display: inline-block;
   width: 800px;
-  height: 600px;
+  height: auto;
   margin-right: 30px;
 }
 
 .memo {
   display: inline-block;
   width: calc(100% - 830px);
-  height: 600px;
+  height: auto;
   vertical-align: top;
-}
-
-@media screen and (max-width: 1100) {
-  .player {
-    display: block;
-    width: 100%;
-  }
-
-  .memo {
-    display: block;
-    width: 100%;
-  }
 }
 
 .hoge {
@@ -127,3 +115,5 @@ label {
 .now {
   margin-bottom: 30px;
 }
+
+@media screen and (min-width: 768px) {}
