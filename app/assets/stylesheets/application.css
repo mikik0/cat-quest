@@ -13,16 +13,17 @@
  *= require_tree .
  *= require_self
  */
-.sidebar{
-	background-color: #A08C6D;
+.sidebar {
+  background-color: #A08C6D;
 }
 
 /* Reset CSS */
 \@charset "utf-8";
+
 * {
   -webkit-box-sizing: border-box;
-  -moz-box-sizing:    border-box;
-  box-sizing:         border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 html {
@@ -39,15 +40,15 @@ button,
 input,
 select,
 textarea {
-  font-family: 'ヒラギノ角ゴシック','Hiragino Sans',sans-serif;
+  font-family: 'ヒラギノ角ゴシック', 'Hiragino Sans', sans-serif;
 }
 
 body {
-font-size: 14px;
-line-height: 1.4;
-margin: 0px;]
-margin-bottom: 30px;
-background-color: #FFFFFF;
+  font-size: 14px;
+  line-height: 1.4;
+  margin: 0px;
+  ] margin-bottom: 30px;
+  background-color: #FFFFFF;
 }
 
 p {
@@ -64,33 +65,33 @@ img {
 }
 
 ul {
-	padding: 0px;
-	list-style: none;
-	margin:0;
+  padding: 0px;
+  list-style: none;
+  margin: 0;
 }
 
-h1{
-    margin:0;
+h1 {
+  margin: 0;
 }
 
-h2{
-    margin:0;
+h2 {
+  margin: 0;
 }
 
 .oh {
-    overflow: hidden;
+  overflow: hidden;
 }
 
 .L {
-    float: left;
+  float: left;
 }
 
 .R {
-    float: right;
+  float: right;
 }
 
 .sp {
-    display: none;
+  display: none;
 }
 
 .pr {
@@ -98,10 +99,10 @@ h2{
 }
 
 #menu {
-    display: none;
+  display: none;
 }
 
-.flex{
+.flex {
   flex-wrap: wrap;
   display: -webkit-box;
   display: -moz-box;
@@ -112,7 +113,8 @@ h2{
   display: -moz-flex;
   display: flex;
 }
-.flex-sb{
+
+.flex-sb {
   flex-wrap: wrap;
   display: -webkit-box;
   display: -moz-box;
@@ -125,23 +127,22 @@ h2{
   justify-content: space-between;
 }
 
-.wrapper{
+.wrapper {
   width: 96%;
   max-width: 900px;
-  margin:0 auto;
+  margin: 0 auto;
 }
 
 @media (max-width: 768px) {
+  .pc {
+    display: none;
+  }
 
-.pc {
-  display: none;
-}
+  .sp {
+    display: block;
+  }
 
-.sp {
-  display: block;
-}
-
-.wrapper{
-  max-width: 94%;
-}
+  .wrapper {
+    max-width: 94%;
+  }
 }
