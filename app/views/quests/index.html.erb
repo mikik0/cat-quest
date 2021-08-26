@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <section class="text-gray-600 body-font">
-  <div class="container px-5 py-24 mx-auto">
+  <div class="container py-24 mx-auto">
     <div class="flex flex-col text-center w-full mb-20">
       <h1 class="sm:text-4xl text-3xl font-medium title-font mb-2 text-gray-900">クエスト一覧</h1>
     </div>
@@ -9,11 +9,13 @@
       <table class="table-auto w-full text-left whitespace-no-wrap">
         <thead>
           <tr>
-            <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl">タイトル</th>
-            <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">詳細</th>
-            <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">開始日</th>
-            <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">終了日</th>
-            <th class="w-10 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tr rounded-br"></th>
+            <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-200 rounded-tl rounded-bl">タイトル</th>
+            <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-200">詳細</th>
+            <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-200">開始日</th>
+            <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-200">終了日</th>
+            <th class="w-10 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-200 rounded-tr rounded-br"></th>
+            <th class="w-10 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-200 rounded-tr rounded-br"></th>
+            <th class="w-10 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-200 rounded-tr rounded-br"></th>
           </tr>
         </thead>
         <tbody>
@@ -21,8 +23,8 @@
           <tr>
             <td class="px-4 py-3 text-lg text-gray-900"><%= quest.title %></td>
             <td class="px-4 py-3 text-lg text-gray-900"><%= quest.description %></td>
-            <td class="px-4 py-3 text-lg text-gray-900"><%= quest.created_at %></td>
-            <td class="px-4 py-3 text-lg text-gray-900"><%= quest.finished_at %></td>
+            <td class="px-4 py-3 text-lg text-gray-900"><%= quest.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+            <td class="px-4 py-3 text-lg text-gray-900"><%= quest.finished_at.strftime("%Y-%m-%d %H:%M") %></td>
             <td class="px-4 py-3 text-lg text-gray-900"><%= link_to '確認', quest %></td>
             <% if current_user.owner?(quest.id) %>
               <td class="px-4 py-3 text-lg text-gray-900"><%= link_to '編集', edit_quest_path(quest) %></td>

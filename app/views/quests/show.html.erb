@@ -12,11 +12,11 @@
 
 <p>
   <strong>開始日:</strong>
-  <%= @quest.created_at %>
+  <%= @quest.created_at.strftime("%Y-%m-%d %H:%M") %>
 </p>
 
   <strong>終了日:</strong>
-  <%= @quest.finished_at %>
+  <%= @quest.finished_at.strftime("%Y-%m-%d %H:%M") %>
 </p>
 <%# 参加するボタンをつける %>
 <p>

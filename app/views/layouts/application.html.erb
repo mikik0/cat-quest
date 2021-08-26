@@ -10,6 +10,7 @@
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
   </head>
   <body>
+
   <% if user_signed_in? %>
   <div class="flex flex-row min-h-screen bg-gray-100 text-gray-800">
     <aside
@@ -27,7 +28,7 @@
           <li class="my-px">
             <a
               href="/"
-              class="flex flex-row items-center h-10 px-3 rounded-lg text-gray-700 bg-gray-100"
+              class="flex flex-row items-center h-10 px-3 rounded-lg text-gray-700 hover:bg-gray-100 hover:text-gray-700"
             >
               <span class="flex items-center justify-center text-lg text-gray-400">
                 <svg
