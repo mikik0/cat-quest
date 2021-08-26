@@ -44,10 +44,27 @@ class User < ApplicationRecord
     return level
   end
 
+  # userの持つcharacterのレベル
+  def current_character_level
+    table = Character.level_table
+    user_level = current_level
+    count = table.inject(-1) do | count, level |
+      if level <= user_level
+        count += 1
+      end
+      count
+    end
+    return table[count]
+  end
+
   # userの経験値取得
   def get_nekokan(nekokan)
     nekokans.create(nekokan: nekokan, acquired_at: Date.current)
     self.total_nekokan += nekokan
+    chara_level = self.current_character_level
+    if chara_level != self.character.level
+      self.character_id = Character.select(chara_level)
+    end
     self.save
   end
 

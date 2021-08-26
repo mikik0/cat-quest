@@ -5,7 +5,7 @@
   <p class="skm text-lg"><%= @user.name %></p>
   <p class="skm text-lg"><%= @user.introduction %></p>
   <%= link_to "edit profile",edit_user_path %>
-  <p class="skm text-lg"> Lv.<%= @character.level %>  <% @character.name %></p>
+  <p class="skm text-lg"> Lv.<%= @user.current_level %></p>
   <p class="skm text-lg">総獲得ねこ缶: <%= @user.total_nekokan %></p>
 </div>
 
