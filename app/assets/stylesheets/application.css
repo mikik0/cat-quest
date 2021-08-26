@@ -137,6 +137,14 @@ main {
 	flex-grow: 2
 }
 
+.i-text-gray-300 {
+	color: #e2e8f0 !important;
+}
+
+.i-text-gray-300:hover {
+	color: #666666 !important;
+}
+
 @media (max-width: 768px) {
   .pc {
     display: none;
