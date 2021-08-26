@@ -5,6 +5,11 @@ class TagsController < ApplicationController
         render json: @contents
     end
 
+    def event
+        @event = TechTagEvent.all
+        render json: @event
+    end
+
     def index
         @tags = Tag.all
         render json: @tags

@@ -32,7 +32,7 @@ class QuestsController < ApplicationController
 
         @quest.contents.each do |content|
           TechTagEvent.create(
-            content_id: content.id
+            content_id: content.id,
             youtube_url: content.youtube_url
           )
         end
