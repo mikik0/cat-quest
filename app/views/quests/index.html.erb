@@ -21,7 +21,7 @@
           <tr>
             <td class="px-4 py-3 text-lg text-gray-900"><%= quest.title %></td>
             <td class="px-4 py-3 text-lg text-gray-900"><%= quest.description %></td>
-            <td class="px-4 py-3 text-lg text-gray-900"><%= quest.strated_at %></td>
+            <td class="px-4 py-3 text-lg text-gray-900"><%= quest.created_at %></td>
             <td class="px-4 py-3 text-lg text-gray-900"><%= quest.finished_at %></td>
             <td class="px-4 py-3 text-lg text-gray-900"><%= link_to '確認', quest %></td>
             <% if current_user.owner?(quest.id) %>
