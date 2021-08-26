@@ -1,0 +1,3 @@
+class Nekokan < ApplicationRecord
+  belongs_to :user
+end

@@ -7,6 +7,10 @@ class UserContentsController < ApplicationController
       @user_contents.content_id = params[:content_id]
       @user_contents.is_finished = true
       @user_contents.save
+      current_user.get_nekokan(@user_contents.nekokan)
+      if @quest.finished?(current_user)
+        current_user.get_nekokan(@quest.total_nekokan(current_user))
+      end
     end
 
     def destroy
