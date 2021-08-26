@@ -1,69 +1,68 @@
-<!--
-  <p id="notice"><%= notice %></p>
--->
+<!-- <p id="notice"><%= notice %></p> -->
 
 <!-- component -->
-    <div class="bg-white min-h-screen pt-2 font-mono">
-        <div class="container mx-auto">
-            <div class="inputs w-full max-w-2xl p-6 mx-auto">
-                <h1 class="text-2xl text-gray-900"><%= @quest.title %></h1>
-                <form class="mt-6 border-t border-gray-400 pt-4">
-                    <div class='flex flex-wrap -mx-3 mb-6'>
-                        <div class='w-full md:w-full px-3 mb-6'>
-                            <label class='block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2' for='grid-text-1'>詳細</label>
-                            <p>
-                            <%= @quest.description %>
-                            </p>
-                        </div>
-                        <div class='w-full md:w-full px-3 mb-6'>
-                            <label class='block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2' >開始日</label>
-                            <%= @quest.created_at.strftime("%Y-%m-%d %H:%M") %>
-                        </div>
-                        <div class='w-full md:w-full px-3 mb-6'>
-                            <label class='block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2' >終了日</label>
-                            <%= @quest.finished_at.strftime("%Y-%m-%d %H:%M") %>
-                        </div>
-                        <%# 参加するボタンをつける %>
-                        <div class='w-full md:w-full px-3 mb-6'>
-                        <p>
-                          <% if @quest.user_questsed_by?(current_user) %>
-                            <%= render "user_quests", quest: @quest %>
-                          <% else %>
-                            <%= render "unuser_quests", quest: @quest %>
-                          <% end %>
-                        </p>
-                        </div>
-                        <div class='w-full md:w-full px-3 mb-6'>
-                        <% if @quest.user_questsed_by?(current_user) %>
-                        <%# もしクエスト受注中ならばサムネイルがリンク化される。 %>
-                        <label class='block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2' for='grid-text-1'>クエスト動画一覧</label>
-                          <% @contents.each do |content| %>
-                            <tr>
-                              <%= link_to myquest_content_path(@quest, content), target: :_blank do %>
-                                <img class="lazyloaded" src="https://img.youtube.com/vi/<%= content.youtube_url.gsub("https://www.youtube.com/watch?v=","") %>/hqdefault.jpg">
-                              <% end %>
-                              <td><%= content.youtube_url %></td>
-                            </tr>
-                          <% end %>
-                        <% else %>
-                          <% @contents.each do |content| %>
-                            <tr>
-                                <img class="lazyloaded" src="https://img.youtube.com/vi/<%= content.youtube_url.gsub("https://www.youtube.com/watch?v=","") %>/hqdefault.jpg">
-                                <td><%= content.youtube_url %></td>
-                            </tr>
-                          <% end %>
-                        <% end %>
-                        </div>
-                        <div>
-                        <% if current_user.owner?(@quest.id) %>
-                          <%= link_to '編集', edit_quest_path(@quest), class: "px-4 py-3 text-lg text-gray-900" %> |
-                        <% end %>
-                        <%= link_to '戻る', quests_path, class: "px-4 py-3 text-lg text-gray-900" %>
-                        </div>
-                            </div>
-                        </div>
-                    </div>
-                </form>
+<div class="min-h-screen pt-2 font-mono">
+  <div class="container mx-auto">
+    <div class="inputs w-full max-w-2xl p-6 mx-auto">
+      <h1 class="text-2xl text-gray-900"><%= @quest.title %></h1>
+      <form class="mt-6 border-t border-gray-400 pt-4">
+        <div class='flex flex-wrap -mx-3 mb-6'>
+          <div class='w-full md:w-full px-3 mb-6'>
+            <label class='block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2' for='grid-text-1'>詳細</label>
+            <p>
+              <%= @quest.description %>
+            </p>
+          </div>
+          <div class='w-full md:w-full px-3 mb-6'>
+            <label class='block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2'>開始日</label>
+            <%= @quest.created_at.strftime("%Y-%m-%d %H:%M") %>
+          </div>
+          <div class='w-full md:w-full px-3 mb-6'>
+            <label class='block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2'>終了日</label>
+            <%= @quest.finished_at.strftime("%Y-%m-%d %H:%M") %>
+          </div>
+          <%# 参加するボタンをつける %>
+            <div class='w-full md:w-full px-3 mb-6'>
+              <p>
+                <% if @quest.user_questsed_by?(current_user) %>
+                  <%= render "user_quests", quest: @quest %>
+                <% else %>
+                  <%= render "unuser_quests", quest: @quest %>
+                <% end %>
+              </p>
             </div>
+            <div class='w-full md:w-full px-3 mb-6'>
+              <% if @quest.user_questsed_by?(current_user) %>
+                <%# もしクエスト受注中ならばサムネイルがリンク化される。 %>
+                  <label class='block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2' for='grid-text-1'>クエスト動画一覧</label>
+                  <% @contents.each do |content| %>
+                    <tr>
+                      <%= link_to myquest_content_path(@quest, content), target: :_blank do %>
+                      <img class="lazyloaded" src="https://img.youtube.com/vi/<%= content.youtube_url.gsub(" https://www.youtube.com/watch?v="," ") %>/hqdefault.jpg">
+                    <% end %>
+                    <td><%= content.youtube_url %></td>
+                  </tr>
+                <% end %>
+              <% else %>
+                <% @contents.each do |content| %>
+                  <tr>
+                    <img class="lazyloaded" src="https://img.youtube.com/vi/<%= content.youtube_url.gsub(" https://www.youtube.com/watch?v="," ") %>/hqdefault.jpg">
+                    <td><%= content.youtube_url %></td>
+                  </tr>
+                <% end %>
+              <% end %>
+            </div>
+            <div>
+              <% if current_user.owner?(@quest.id) %>
+                <%= link_to '編集', edit_quest_path(@quest), class: "px-4 py-3 text-lg text-gray-900" %>
+                |
+              <% end %>
+              <%= link_to '戻る', quests_path, class: "px-4 py-3 text-lg text-gray-900" %>
+            </div>
+          </div>
         </div>
-    </div>
+      </div>
+    </form>
+  </div>
+</div>
+</div>
