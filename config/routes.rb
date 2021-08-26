@@ -17,6 +17,10 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :quests do
+    resource :user_quests, only: [:create, :destroy]
+  end
+
   get 'techtag/contents', to: 'tags#contents'
   get 'techtag/index', to: 'tags#index'
   get 'techtag/create', to: 'tags#create'

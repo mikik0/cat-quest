@@ -29,6 +29,13 @@ class QuestsController < ApplicationController
           quest_id: @quest.id,
           is_owner: true
         )
+
+        @quest.contents.each do |content|
+          TechTagEvent.create(
+            content_id: content.id
+            youtube_url: content.youtube_url
+          )
+        end
         format.html { redirect_to @quest, notice: "Quest was successfully created." }
         format.json { render :show, status: :created, location: @quest }
       else
