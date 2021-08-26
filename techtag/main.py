@@ -42,8 +42,9 @@ if __name__ == '__main__':
             if qs_d == "":
                 id = youtube_url[youtube_url.rfind('/') + 1:]
             else:
-                id = qs_d["v"]
+                id = qs_d["v"][0]
 
+            print(id)
             caption = Caption('en', id).caption()
 
             extracter = Extracter(caption, 'en')
@@ -54,13 +55,15 @@ if __name__ == '__main__':
                 if candidate in tagdict:
                     winners.append(candidate)
 
+            print(winners)
             for winner in winners:
-                cur.execute('SELECT * FROM tags WHERE name = ' + winner)
+                cur.execute('SELECT * FROM tags WHERE name = \'' + winner + "\'")
                 tags = cur.fetchall()
                 tag_id = tags[0][0]
 
 
                 cur.execute('SELECT COUNT(1) AS count FROM tag_contents')
                 count = cur.fetchone()
-                cur.execute('INSERT INTO tag_contents VALUES ('+ count["count"] + "," + str(tag_id) + "," + str(content_id) + "," + '\'2015-04-07\'' + "," + '\'2015-04-07\'' + ")")
+
+                cur.execute('INSERT INTO tag_contents VALUES ('+ str(count[0]) + "," + str(tag_id) + "," + str(content_id) + "," + '\'2015-04-07\'' + "," + '\'2015-04-07\'' + ")")
 

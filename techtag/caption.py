@@ -18,7 +18,7 @@ class Caption:
 
   def caption(self):
       # id is videoID like 7lCDEYXw3mM
-      resultVtt = self.target_id + '.' + self.lang + '.vtt'
+      resultVtt = str(self.target_id) + '.' + self.lang + '.vtt'
 
       # Youtube-dl does sys.exit(). This was a problem, so I created a thread.
       thread = threading.Thread(target=self.vttdl)
