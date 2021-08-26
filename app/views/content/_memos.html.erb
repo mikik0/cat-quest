@@ -1,0 +1,11 @@
+<table>
+    <% content.memos.each do |memo| %>
+        <tr>
+            <td id="<%= memo.id %>"><%= Time.at(memo.time).utc.strftime('%X') %></td>
+            <td><%= memo.text %></td>
+            <% if memo.user_id == current_user.id %>
+              <td><%= link_to '削除', myquest_content_memo_path(@quest,content,memo), method: :delete, remote: true, data: {confirm: 'よろしいですか'}  %></td>
+            <% end %>
+        </tr>
+    <% end %>
+</table>

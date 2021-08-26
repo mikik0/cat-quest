@@ -1,8 +1,7 @@
 <div id="ytplayer"></div>
-<div>
-<input type="button" name="btn_play_status" value="各種再生状態を取得" onclick="getPlayStatus();" />
-</div>
+
 <br />
+<!--
 <div>バッファ済みの動画の割合</div>
 <div>※停止中のバッファは反映されない模様</div>
 <div id="loaded" style="border:solid 1px #ccc;height: 20px; width: 400px; background-color:#eee;"></div>
@@ -11,28 +10,26 @@
 <div id="status" style="border:solid 1px #ccc;height: 20px; width: 400px; background-color:#eee;"></div>
 <br />
 <div>再生開始からの経過時間</div>
-<div id="time" style="border:solid 1px #ccc;height: 20px; width: 400px; background-color:#eee;"></div>
+<div id="time1" style="border:solid 1px #ccc;height: 20px; width: 400px; background-color:#eee;"></div>
 <div>動画の時間</div>
 <div id="duration" style="border:solid 1px #ccc;height: 20px; width: 400px; background-color:#eee;"></div>
-
+-->
 
 <%# メモ機能 %>
 <p>メモ機能</p>
-<%= form_with model:[@quest,@content,@memo], url: myquest_content_memos_path(@quest,@content) , data: {remote: true} do |f| %>
+<%= form_with model:[@quest,@content,@memo], url: myquest_content_memos_path(@quest,@content) do |f| %>
     <div>
         <%= f.label :本文 %>
         <%= f.text_field :text, autofocus: true, id: "text" %>
+        <%= f.hidden_field :time, value: 'time', id: :time %>
     </div>
     <div><%= f.submit "投稿する" %></div>
 <% end %>
 
 <p>メモ一覧</p>
-<% @content.memos.each do |memo| %>
-    <tr>
-        <td><%= memo.id %></td>
-        <td><%= memo.text %></td>
-    </tr>
-<% end %>
+<div class="memo__table">
+    <%= render 'memos', content: @content %>
+</div>
 
 <script>
     // API読み込み
@@ -55,9 +52,10 @@
       });
     }
 
+
     var fn = function getPlayStatus() {
         var loaded = player.getVideoLoadedFraction();
-        document.getElementById('loaded').innerHTML = (Math.floor(loaded*100)) + '%';
+        // document.getElementById('loaded').innerHTML = (Math.floor(loaded*100)) + '%';
         var status = player.getPlayerState();
         var names = {
             '-1' : '未開始',
@@ -67,10 +65,10 @@
             '3' : 'バッファリング中',
             '5' : '頭出し済み'
         };
-        document.getElementById('status').innerHTML = names[status];
+        // document.getElementById('status').innerHTML = names[status];
         var time = player.getCurrentTime();
-        document.getElementById('time').innerHTML = time + '秒';
-        document.getElementById('time').value = time;
+        // document.getElementById('time1').innerHTML = time + '秒';
+        document.getElementById('time').value = player.getCurrentTime();
 
 
         if (done == false) {
@@ -96,9 +94,16 @@
 
     function onPlayerReady(event) {
         document.getElementById('duration').value = player.getDuration();
-        document.getElementById('duration').innerHTML = player.getDuration() + '秒';
+        // document.getElementById('duration').innerHTML = player.getDuration() + '秒';
     }
 
     setInterval(fn, 1000);
+
+    <% @content.memos.each do |memo| %>
+    var jamp = document.getElementById('<%= memo.id %>');
+    jamp.addEventListener('click', function() {
+        player.loadVideoById({'videoId': '<%= @content.youtube_url.gsub("https://www.youtube.com/watch?v=","") %>','startSeconds': <%= memo.time %>});
+    }, false);
+    <% end %>
 
 </script>
