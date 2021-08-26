@@ -63,19 +63,17 @@
                   stroke-width="2"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
-                  <% if current_user.has_current_quest? %>
-                    class="h-6 w-6 text-red-500"
-                  <% else %>
-                    class="h-6 w-6 text-gray-500"
-                  <% end %>
+                  class="h-6 w-6"
                 >
                   <path stroke="none" d="M0 0h24v24H0z"/>
                   <circle cx="9" cy="7" r="4" />
                   <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
-                  <path d="M16 11l2 2l4 -4" />
                 </svg>
               </span>
               <span class="ml-3">MyQuests</span>
+              <% if current_user.has_current_quest? %>
+                <svg class="h-6 w-6 text-red-500"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <circle cx="12" cy="12" r="9" />  <line x1="12" y1="8" x2="12" y2="12" />  <line x1="12" y1="16" x2="12.01" y2="16" /></svg>
+              <% end %>
             </a>
           </li>
           <li class="my-px"></li>
