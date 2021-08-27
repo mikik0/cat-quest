@@ -98,6 +98,8 @@
         // document.getElementById('duration').innerHTML = player.getDuration() + '秒';
     }
 
+    setInterval(fn, 1000);
+
     <% @content.memos.each do |memo| %>
     var jamp = document.getElementById('<%= memo.id %>');
     jamp.addEventListener('click', function() {
