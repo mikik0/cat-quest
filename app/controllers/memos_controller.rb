@@ -4,6 +4,7 @@ class MemosController < ApplicationController
         @quest = Quest.find(params[:myquest_id])
         @memo = current_user.memos.new(memo_params)
         @memo.content_id = @content.id
+        @memo.save
     end
 
     def destroy
