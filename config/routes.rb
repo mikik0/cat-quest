@@ -12,10 +12,14 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :edit, :update]
 
   resources :myquests, only: [:index], controller: :users do
-    resources :contents, only: [:show] do
+    resources :content, only: [:show] do
       resources :memos, only: [:create, :destroy]
+      resources :user_contents, only: [:create]
     end
   end
+
+  post 'memo/:id' => 'goods#create', as: 'create_good'
+  delete 'memo/:id' => 'goods#destroy', as: 'delete_good'
 
   resources :quests do
     resource :user_quests, only: [:create, :destroy]

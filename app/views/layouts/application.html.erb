@@ -8,8 +8,10 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://www.youtube.com/iframe_api"></script>
   </head>
   <body>
+
   <% if user_signed_in? %>
   <div class="flex flex-row min-h-screen bg-gray-100 text-gray-800">
     <aside
@@ -18,7 +20,7 @@
       <div class="sidebar-header flex items-center justify-center py-4">
         <div class="inline-flex">
           <a href="/" class="inline-flex flex-row items-center">
-            <span class="leading-10 text-gray-100 text-2xl font-bold ml-1 uppercase">ねこくえすと</span>
+            <span class="leading-10 text-gray-100 text-2xl font-bold ml-1  uppercase">ねこくえすと</span>
           </a>
         </div>
       </div>
@@ -27,7 +29,7 @@
           <li class="my-px">
             <a
               href="/"
-              class="flex flex-row items-center h-10 px-3 rounded-lg text-gray-700 bg-gray-100"
+              class="flex flex-row items-center h-10 px-3 rounded-lg text-gray-700 hover:bg-gray-100 hover:text-gray-700"
             >
               <span class="flex items-center justify-center text-lg text-gray-400">
                 <svg
@@ -50,8 +52,35 @@
           <li class="my-px"></li>
           <li class="my-px">
             <a
+              href="/myquests"
+              class="flex flex-row items-center h-10 px-3 rounded-lg text-gray-700 hover:bg-gray-100 hover:text-gray-700"
+            >
+              <span class="flex items-center justify-center text-lg text-gray-400">
+                <svg
+                  fill="none"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  class="h-6 w-6"
+                >
+                  <path stroke="none" d="M0 0h24v24H0z"/>
+                  <circle cx="9" cy="7" r="4" />
+                  <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+                </svg>
+              </span>
+              <span class="ml-3">MyQuests</span>
+              <% if current_user.has_current_quest? %>
+                <svg class="h-6 w-6 text-red-500"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <circle cx="12" cy="12" r="9" />  <line x1="12" y1="8" x2="12" y2="12" />  <line x1="12" y1="16" x2="12.01" y2="16" /></svg>
+              <% end %>
+            </a>
+          </li>
+          <li class="my-px"></li>
+          <li class="my-px">
+            <a
               href="/quests"
-              class="flex flex-row items-center h-10 px-3 rounded-lg text-gray-300 hover:bg-gray-100 hover:text-gray-700"
+              class="flex flex-row items-center h-10 px-3 rounded-lg text-gray-700 hover:bg-gray-100 hover:text-gray-700"
             >
               <span class="flex items-center justify-center text-lg text-gray-400">
                 <svg
@@ -75,7 +104,7 @@
           <li class="my-px">
             <a
               href="/quests/new"
-              class="flex flex-row items-center h-10 px-3 rounded-lg text-gray-300 hover:bg-gray-100 hover:text-gray-700"
+              class="flex flex-row items-center h-10 px-3 rounded-lg text-gray-700 hover:bg-gray-100 hover:text-gray-700"
             >
               <span class="flex items-center justify-center text-lg text-gray-400">
                 <svg
@@ -126,7 +155,7 @@
             <a
               data-method="delete"
               href="/logout"
-              class="flex flex-row items-center h-10 px-3 rounded-lg text-gray-300 hover:bg-gray-100 hover:text-gray-700"
+              class="flex flex-row items-center h-10 px-3 rounded-lg text-gray-700 hover:bg-gray-100 hover:text-gray-700"
             >
               <span class="flex items-center justify-center text-lg text-red-500">
                 <svg
@@ -149,16 +178,17 @@
         </ul>
       </div>
     </aside>
-    <main class="main flex flex-col flex-grow -ml-64 md:ml-0 transition-all duration-150 ease-in">
-      <div class="main-content flex flex-col flex-grow p-4">
-        <div
-          class="flex-col flex-grow bg-white rounded mt-4"
-        >
+    <main>
   <% end %>
+      <%# <div class="main-content flex flex-col flex-grow p-4"> %>
+        <%# <div %>
+          <%# class="flex-col flex-grow bg-white rounded mt-4"> %>
         <%= yield %>
-        </div>
-      </div>
-    </main>
+        <%# </div> %>
+      <%# </div> %>
+    <% if user_signed_in? %>
+      </main>
+    <% end %>
   </div>
   </body>
 </html>

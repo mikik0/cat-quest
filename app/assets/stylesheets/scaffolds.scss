@@ -21,15 +21,6 @@ pre {
 
 a {
   color: #000;
-
-  &:visited {
-    color: #666;
-  }
-
-  &:hover {
-    color: #fff;
-    background-color: #000;
-  }
 }
 
 th {
@@ -81,4 +72,57 @@ div {
 
 label {
   display: block;
+}
+
+.sidebar{
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 200;
+  height: 100vh;
+}
+
+main{
+  margin-top: 50px;
+  margin-left: 300px;
+  margin-right: 200px;
+  width: calc(100% - 300px);
+}
+
+.player{
+  display: inline-block;
+  width: 800px;
+  height: 600px;
+  margin-right: 30px;
+}
+
+.memo{
+  display: inline-block;
+  width: calc(100% - 830px);
+  height: 600px;
+  vertical-align: top;
+}
+
+@media screen and (max-width: 1100) {
+  .player {
+    display: block;
+    width: 100%;
+  }
+  .memo {
+    display: block;
+    width: 100%;
+  }
+}
+
+.hoge{
+  display: block;
+  width: 100%;
+}
+
+.skm{
+  margin: 15px;
+}
+
+.now{
+  margin-bottom: 30px;
 }

@@ -1,37 +1,40 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Quests</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>total_video_time</th>
-      <th>strated_at</th>
-      <th>finished_at</th>
-      <th colspan="5"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @quests.each do |quest| %>
-      <tr>
-        <td><%= quest.title %></td>
-        <td><%= quest.description %></td>
-        <td><%= quest.total_video_time %></td>
-        <td><%= quest.strated_at %></td>
-        <td><%= quest.finished_at %></td>
-        <td><%= link_to 'Show', quest %></td>
-        <% if current_user.owner?(quest.id) %>
-          <td><%= link_to 'Edit', edit_quest_path(quest) %></td>
-          <td><%= link_to 'Destroy', quest, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+<section class="text-gray-600 body-font">
+  <div class="container py-24 mx-auto">
+    <div class="flex flex-col text-center w-full mb-20">
+      <h1 class="sm:text-4xl text-3xl font-medium title-font mb-2 text-gray-900">受注中クエスト一覧</h1>
+    </div>
+    <div class="lg:w-2/3 w-full mx-auto overflow-auto">
+      <table class="table-auto w-full text-left whitespace-no-wrap">
+        <thead>
+          <tr>
+            <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-200 rounded-tl rounded-bl">タイトル</th>
+            <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-200">開始日</th>
+            <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-200">終了日</th>
+            <th class="w-10 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-200 rounded-tr rounded-br"></th>
+            <th class="w-10 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-200 rounded-tr rounded-br"></th>
+            <th class="w-10 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-200 rounded-tr rounded-br"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @quests.each do |quest| %>
+          <tr>
+            <td class="px-4 py-3 text-lg text-gray-900"><%= quest.title %></td>
+            <td class="px-4 py-3 text-lg text-gray-900"><%= quest.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+            <td class="px-4 py-3 text-lg text-gray-900"><%= quest.finished_at.strftime("%Y-%m-%d %H:%M") %></td>
+            <td class="px-4 py-3 text-lg text-gray-900"><%= link_to '確認', quest %></td>
+            <% if current_user.owner?(quest.id) %>
+              <td><%= link_to '編集', edit_quest_path(quest), class: "px-4 py-3 text-lg text-gray-900" %></td>
+              <td><%= link_to '削除', quest, class: "px-4 py-3 text-lg text-gray-900", method: :delete, data: { confirm: '本当に削除しますか？' } %></td>
+            <% end %>
+          </tr>
         <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Quest', new_quest_path %>
+        </tbody>
+      </table>
+    </div>
+    <div class="flex pl-4 mt-4 lg:w-2/3 w-full mx-auto">
+      <%= link_to 'クエスト作成', new_quest_path, :class  => "flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded" %>
+    </div>
+  </div>
+</section>

@@ -10,6 +10,8 @@ class QuestsController < ApplicationController
 
   # GET /quests/1 or /quests/1.json
   def show
+    @quests = Quest.all
+    @contents = Content.where(quest_id: @quest.id)
   end
 
   # GET /quests/new

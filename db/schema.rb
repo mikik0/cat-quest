@@ -26,7 +26,6 @@ ActiveRecord::Schema.define(version: 2021_08_26_130610) do
   create_table "contents", force: :cascade do |t|
     t.bigint "quest_id"
     t.string "youtube_url"
-    t.string "video_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["quest_id"], name: "index_contents_on_quest_id"
@@ -63,7 +62,7 @@ ActiveRecord::Schema.define(version: 2021_08_26_130610) do
   create_table "nekokans", force: :cascade do |t|
     t.bigint "user_id"
     t.date "acquired_at"
-    t.string "nekocan"
+    t.integer "nekokan"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_nekokans_on_user_id"
@@ -104,6 +103,7 @@ ActiveRecord::Schema.define(version: 2021_08_26_130610) do
   create_table "user_contents", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "content_id"
+    t.integer "video_time"
     t.boolean "is_finished", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -125,7 +125,7 @@ ActiveRecord::Schema.define(version: 2021_08_26_130610) do
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.text "introduction"
-    t.integer "total_nekokan"
+    t.integer "total_nekokan", default: 0
     t.bigint "character_id"
     t.string "encrypted_password", default: "", null: false
     t.datetime "remember_created_at"
