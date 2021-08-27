@@ -9,7 +9,7 @@
     <div>
       <%= search_form_for @q, url: search_quests_path do |f| %>
         <%= f.label :contents_tags_id_eq, 'クエスト検索', :class => "text-sm text-gray-900" %>
-        <%= f.collection_select :contents_tags_id_eq, Tag.all, :id, :name, {include_blank: true} %>
+        <%= f.collection_select :contents_tags_id_eq, Tag.all, :id, :name, {include_blank: "全てのクエスト" } %>
         <%= f.submit '検索' %>
       <% end %>
     </div>
