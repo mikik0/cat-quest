@@ -6,6 +6,13 @@
       <h1 class="sm:text-4xl text-3xl font-medium title-font mb-2 text-gray-900">クエスト一覧</h1>
     </div>
     <div class="lg:w-2/3 w-full mx-auto overflow-auto">
+    <div>
+      <%= search_form_for @q, url: search_quests_path do |f| %>
+        <%= f.label :contents_tags_id_eq, 'クエスト検索', :class => "text-sm text-gray-900" %>
+        <%= f.collection_select :contents_tags_id_eq, Tag.all, :id, :name, {include_blank: true} %>
+        <%= f.submit '検索' %>
+      <% end %>
+    </div>
       <table class="table-auto w-full text-left whitespace-no-wrap">
         <thead>
           <tr>
