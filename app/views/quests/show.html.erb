@@ -41,6 +41,9 @@
                               <%= link_to myquest_content_path(@quest, content), target: :_blank do %>
                                 <img class="lazyloaded" src="https://img.youtube.com/vi/<%= content.youtube_url.gsub("https://www.youtube.com/watch?v=","") %>/hqdefault.jpg">
                               <% end %>
+                              <% if content.movie_finished?(current_user) %>
+                                <p>この動画は視聴済みです</p>
+                              <% end %>
                               <td><%= content.youtube_url %></td>
                             </tr>
                           <% end %>
