@@ -1,10 +1,10 @@
 <div  class="parent">
 <div class="child1">
-  <p class="skm text-lg">現在のキャラ: Lv.<%= @character.level %> <%= @character.name %></p>
-  <img src="http://placehold.it/150x150">
+  <p class="skm text-lg">現在のねこ: Lv.<%= @character.level %> <%= @character.name %></p>
+  <img src="<%= @character.image_id %>">
   <p class="skm text-lg"><%= @user.name %></p>
   <p class="skm text-lg"><%= @user.introduction %></p>
-  <%= link_to "edit profile",edit_user_path %>
+  <%#= link_to "edit profile",edit_user_path %>
   <p class="skm text-lg"> Lv.<%= @user.current_level %></p>
   <p class="skm text-lg">総獲得ねこ缶: <%= @user.total_nekokan %></p>
 </div>
@@ -58,7 +58,4 @@
     <% end %>
    </div>
   </div>
-</div>
-<div>
-  <img src="http://placehold.it/450x150">
 </div>

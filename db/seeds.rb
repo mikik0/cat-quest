@@ -8,12 +8,12 @@
 
 
   [
-    [ 1, '初心者ねこ'],
-    [ 1, '若葉ねこ' ],
-    [ 5, '大人ねこ'],
-  ].each do |level, name|
+    [ 1, '初心者ねこ', "https://res.cloudinary.com/dmt03c6vy/image/upload/c_scale,w_200/v1630068446/nekochan_otugzi.png"],
+    [ 1, '若葉ねこ', ""],
+    [ 5, '大人ねこ', ""],
+  ].each do |level, name, image_id|
     Character.create!(
-      { level: level, name: name }
+      { level: level, name: name, image_id: image_id }
     )
   end
 
@@ -42,7 +42,7 @@
   Quest.create!(
     title: "ダミークエスト#{n + 1}",
     description: "ダミーのクエスト#{n + 1}です",
-    finished_at: Time.now
+    finished_at: Time.current+ 10* 24 * 60 * 60
   )
 
   
@@ -59,7 +59,7 @@ quest = Quest.create!(
   title: "ダミークエスト4",
   description: "ダミーのクエスト4です",
   #10日先の期限
-  finished_at: Time.now+ 10* 24 * 60 * 60
+  finished_at: Time.current+ 10* 24 * 60 * 60
 )
 
 UserQuest.create!(

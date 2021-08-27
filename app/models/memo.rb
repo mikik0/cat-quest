@@ -1,7 +1,7 @@
 class Memo < ApplicationRecord
   belongs_to :user
   belongs_to :content
-  has_many :goods
+  has_many :goods, dependent: :destroy
 
   validates :text, presence: true
 

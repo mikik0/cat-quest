@@ -25,8 +25,8 @@
             <td class="px-4 py-3 text-lg text-gray-900"><%= quest.finished_at.strftime("%Y-%m-%d %H:%M") %></td>
             <td class="px-4 py-3 text-lg text-gray-900"><%= link_to '確認', quest %></td>
             <% if current_user.owner?(quest.id) %>
-              <td><%= link_to '編集', edit_quest_path(quest), class: "px-4 py-3 text-lg text-gray-900" %></td>
-              <td><%= link_to '削除', quest, class: "px-4 py-3 text-lg text-gray-900", method: :delete, data: { confirm: '本当に削除しますか？' } %></td>
+              <td class="px-4 py-3 text-lg text-gray-900"><%= link_to '編集', edit_quest_path(quest) %></td>
+              <td class="px-4 py-3 text-lg text-gray-900"><%= link_to '削除', quest, method: :delete, data: { confirm: '本当に削除しますか？' } %></td>
             <% end %>
           </tr>
         <% end %>
