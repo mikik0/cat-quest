@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 2021_08_20_050728) do
   create_table "nekokans", force: :cascade do |t|
     t.bigint "user_id"
     t.date "acquired_at"
-    t.string "nekocan"
+    t.integer "nekokan"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_nekokans_on_user_id"
@@ -118,7 +118,7 @@ ActiveRecord::Schema.define(version: 2021_08_20_050728) do
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.text "introduction"
-    t.integer "total_nekokan"
+    t.integer "total_nekokan", default: 0
     t.bigint "character_id"
     t.string "encrypted_password", default: "", null: false
     t.datetime "remember_created_at"
