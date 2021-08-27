@@ -1,7 +1,7 @@
 <table>
   <% content.memos.each do |memo| %>
     <tr>
-      <td id="<%= memo.id %>" class="cursor-pointer"><%= Time.at(memo.time).utc.strftime('%X') %></td>
+      <td data-memo-id="<%= memo.time %>" class="js-jamp-button cursor-pointer"><%= Time.at(memo.time).utc.strftime('%X') %></td>
       <td><%= memo.text %></td>
       <td class = <%= "good--" + memo.id.to_s %>>
         <%= render "goods/favo_link" ,memo: memo, user: current_user %>
