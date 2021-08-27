@@ -17,6 +17,10 @@
 	background-color: #A08C6D;
 }
 
+.block{
+  display: block;
+}
+
 /* Reset CSS */
 \@charset "utf-8";
 * {

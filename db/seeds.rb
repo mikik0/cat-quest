@@ -23,8 +23,8 @@
     [ 4, 21],
     [ 5, 28],
     [ 6, 36],
-    [ 7, 44]
-    [ 8, 52]
+    [ 7, 44],
+    [ 8, 52],
     [ 9, 60]
   ].each do |level, threshold|
     LevelThreshold.create!(

@@ -38,11 +38,11 @@ class User < ApplicationRecord
 
   # userの現在のレベル
   def current_level
-    level = 1 < character.level ? character.level : 0
-    threshold = 0
+    level = 1 < character.level ? character.level : 1
+    threshold = LevelThreshold.find_by(level: level + 1).threshold
     while threshold <= total_nekokan
       level += 1
-      threshold = LevelThreshold.find_by(level: level + 1).threshold
+      threshold = LevelThreshold.find_by(level: level).threshold
     end
     return level
   end
