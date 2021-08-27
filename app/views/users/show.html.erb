@@ -25,8 +25,8 @@
         <tbody>
           <% @current_quest.each do |quest| %>
           <tr>
-            <td class="px-4 py-3 text-lg text-gray-900"><%= link_to quest.title, quest_path(quest) %></td>
-            <td class="px-4 py-3 text-lg text-gray-900"><%= link_to quest.finished_at.strftime("%Y-%m-%d %H:%M") , quest_path(quest) %></td>
+            <td class="px-4 py-3 text-lg"><%= link_to quest.title, quest_path(quest) %></td>
+            <td class="px-4 py-3 text-lg"><%= link_to quest.finished_at.strftime("%Y-%m-%d %H:%M") , quest_path(quest) %></td>
           </tr>
           <% end %>
         </tbody>
@@ -49,8 +49,8 @@
         <tbody>
           <% @past_quest.each do |quest| %>
           <tr>
-            <td class="px-4 py-3 text-lg text-gray-900"><%= link_to quest.title, quest_path(quest) %></td>
-            <td class="px-4 py-3 text-lg text-gray-900"><%= link_to quest.finished_at.strftime("%Y-%m-%d %H:%M") , quest_path(quest) %></td>
+            <td class="px-4 py-3 text-lg"><%= link_to quest.title, quest_path(quest) %></td>
+            <td class="px-4 py-3 text-lg"><%= link_to quest.finished_at.strftime("%Y-%m-%d %H:%M") , quest_path(quest) %></td>
           </tr>
           <% end %>
         </tbody>
