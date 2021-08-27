@@ -21,15 +21,17 @@
                             <%= @quest.finished_at.strftime("%Y-%m-%d %H:%M") %>
                         </div>
                         <%# 参加するボタンをつける %>
-                        <div class='w-full md:w-full px-3 mb-6'>
-                        <p>
-                          <% if @quest.user_questsed_by?(current_user) %>
-                            <%= render "user_quests", quest: @quest %>
-                          <% else %>
-                            <%= render "unuser_quests", quest: @quest %>
+                        <% if current_user.owner?(@quest.id) ==  false  &&  @quest.current_quest? %>
+                          <div class='w-full md:w-full px-3 mb-6'>
+                          <p>
+                            <% if @quest.user_questsed_by?(current_user) %>
+                              <%= render "user_quests", quest: @quest %>
+                            <% else %>
+                              <%= render "unuser_quests", quest: @quest %>
+                            <% end %>
+                          </p>
+                          </div>
                           <% end %>
-                        </p>
-                        </div>
                         <div class='w-full md:w-full px-3 mb-6'>
                         <% if @quest.user_questsed_by?(current_user) %>
                         <%# もしクエスト受注中ならばサムネイルがリンク化される。 %>
