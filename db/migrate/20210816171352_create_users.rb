@@ -7,7 +7,7 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       # t.string :email,              null: false, default: ""
       t.string :name
       t.text   :introduction
-      t.integer :total_nekokan
+      t.integer :total_nekokan, default: 0
       t.references :character, foreign_key: true
       t.string :encrypted_password, null: false, default: ""
 
