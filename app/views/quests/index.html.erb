@@ -10,7 +10,7 @@
         <tr>
           <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-xl bg-gray-200 rounded-tl rounded-bl text-center">タイトル</th>
           <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-xl bg-gray-200 text-center">開始日</th>
-          <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-xl bg-gray-200 text-center">終了日</th>
+          <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-200 text-center">終了日</th>
           <th class="w-10 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-200 rounded-tr rounded-br"></th>
           <th class="w-10 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-200 rounded-tr rounded-br"></th>
           <th class="w-10 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-200 rounded-tr rounded-br"></th>
@@ -33,6 +33,6 @@
     </table>
   </div>
   <div class="flex pl-4 mt-4 lg:w-2/3 w-full mx-auto">
-    <%= link_to 'クエスト作成', new_quest_path, :class => "flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded" %>
+    <%= link_to 'クエスト作成', new_quest_path, :class => "flex ml-auto bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded", :style => "color:white !important;" %>
   </div>
 </div>
