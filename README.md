@@ -1,24 +1,26 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## How to contribute
 
-Things you may want to cover:
+You can run this app (include rails and db) by following command.
 
-* Ruby version
+```
+docker-compose up
+```
 
-* System dependencies
+if you can't find "nekoquest_development" database.
+you can create database by following command.
 
-* Configuration
+and Migrations are pending. To resolve this issue, run: bin/rails db:migrate RAILS_ENV=development
 
-* Database creation
+```
+docker-compose run web rails db:create
+docker-compose run web rails db:migrate
+```
 
-* Database initialization
+and you should install all used gems, so exec command following.
 
-* How to run the test suite
+```
+docker-compose run web bundle install
+```
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...

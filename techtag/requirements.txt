@@ -1,0 +1,5 @@
+youtube-dl==2021.6.6
+janome
+nltk
+psycopg2-binary
+

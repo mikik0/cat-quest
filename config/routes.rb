@@ -23,5 +23,14 @@ Rails.application.routes.draw do
 
   resources :quests do
     resource :user_quests, only: [:create, :destroy]
+    collection do
+      get 'search'
+    end
   end
+
+  get 'techtag/contents', to: 'tags#contents'
+  get 'techtag/index', to: 'tags#index'
+  get 'techtag/create', to: 'tags#create'
+  get 'techtag/event', to: 'tags#event'
+
 end

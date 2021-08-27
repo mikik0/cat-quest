@@ -1,3 +1,4 @@
+# coding: utf-8
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
@@ -68,3 +69,5 @@ gem 'devise-i18n'
 gem 'jquery-rails'
 
 gem "nested_form"
+
+gem 'ransack'

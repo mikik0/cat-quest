@@ -1,6 +1,8 @@
 class QuestsController < ApplicationController
   before_action :set_quest, only: %i[ show edit update destroy ]
   before_action :authenticate_owner!, only: %i[ edit update destroy]
+  before_action :set_q, only: [:index, :search]
+
 
   # GET /quests or /quests.json
   def index
@@ -30,6 +32,13 @@ class QuestsController < ApplicationController
           quest_id: @quest.id,
           is_owner: true
         )
+
+        @quest.contents.each do |content|
+          TechTagEvent.create(
+            content_id: content.id,
+            youtube_url: content.youtube_url
+          )
+        end
         format.html { redirect_to @quest, notice: "Quest was successfully created." }
         format.json { render :show, status: :created, location: @quest }
       else
@@ -65,6 +74,11 @@ class QuestsController < ApplicationController
     end
   end
 
+  def search
+    @quests = @q.result
+    render :index
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_quest
@@ -75,6 +89,10 @@ class QuestsController < ApplicationController
       unless current_user.owner?(@quest.id)
         redirect_to user_path(current_user)
       end
+    end
+
+    def set_q
+      @q = Quest.ransack(params[:q])
     end
 
     # Only allow a list of trusted parameters through.
