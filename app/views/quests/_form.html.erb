@@ -1,6 +1,6 @@
 <div class="min-h-screen">
   <div class="container mx-auto">
-    <div class="inputs w-full max-w-2xl p-6 mx-auto">
+    <div class="inputs w-full max-w-2xl mx-auto">
       <div class="flex flex-col text-center w-full mt-8 mb-8">
         <h1 class="sm:text-4xl text-3xl font-medium title-font mb-2 text-gray-900">クエスト作成</h1>
       </div>
@@ -46,8 +46,8 @@
             </div>
           <% end %>
         </div>
-        <%= form.link_to_add "リンク追加", :contents %>
-        <div class="actions">
+        <%= form.link_to_add "リンク追加", :contents, :class=>"appearance-none bg-gray-200 text-gray-900 px-2 py-1 shadow-sm border border-gray-400 rounded-md mr-3"%>
+        <div class="actions mt-2">
           <%= form.submit :class=>"appearance-none bg-gray-200 text-gray-900 px-2 py-1 shadow-sm border border-gray-400 rounded-md mr-3" %>
         </div>
       <% end %>
