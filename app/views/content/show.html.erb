@@ -99,6 +99,18 @@
     }
 
     setInterval(fn, 1000);
+    $(function () {
+       $(document).on("click", ".js-edit-comment-button", function () {
+        const commentId = $(this).data('comment-id');
+        const commentLabelArea = $('#js-comment-label-' + commentId);
+        const commentTextArea = $('#js-textarea-comment-' + commentId);
+        const commentButton = $('#js-comment-button-' + commentId);
+
+        commentLabelArea.hide();
+        commentTextArea.show();
+        commentButton.show();
+        });
+    });
 
     <% @content.memos.each do |memo| %>
     var jamp = document.getElementById('<%= memo.id %>');
