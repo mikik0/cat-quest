@@ -11,6 +11,7 @@ class UserContentsController < ApplicationController
       if @quest.finished?(current_user)
         current_user.get_nekokan(@quest.total_nekokan(current_user))
       end
+      flash.now[:notice] = "猫缶を取得しました！"
     end
 
     def destroy
