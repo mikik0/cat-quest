@@ -13,6 +13,8 @@ class User < ApplicationRecord
   has_many :memos
   has_many :goods
 
+  validates :name, presence: true, uniqueness: true
+
 
   # userが持っているクエストを現在のものと終わっているものに分けるメソッド
   def quest_time_sort
