@@ -178,15 +178,17 @@
         </ul>
       </div>
     </aside>
-    <% end %>
     <main>
+  <% end %>
       <%# <div class="main-content flex flex-col flex-grow p-4"> %>
         <%# <div %>
           <%# class="flex-col flex-grow bg-white rounded mt-4"> %>
         <%= yield %>
         <%# </div> %>
       <%# </div> %>
-    </main>
+    <% if user_signed_in? %>
+      </main>
+    <% end %>
   </div>
   </body>
 </html>
