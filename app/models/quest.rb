@@ -4,6 +4,16 @@ class Quest < ApplicationRecord
   has_many :user_contents, through: :contents
   accepts_nested_attributes_for :contents, allow_destroy: true
 
+  validates :title, presence: true
+  validates :description, presence: true
+  validate :finished_check
+
+  def finished_check
+    errors.add(:finished_at, "は現在より前の日付で登録できません。") if
+      self.finished_at < Time.current
+  end
+
+
   scope :content_ids, -> { contents.pluck(:id) }
 
   def finished?(user)
