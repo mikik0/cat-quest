@@ -15,9 +15,13 @@ pickle-email-*.html
 
 # Ignore all logfiles and tempfiles.
 /log/*
-/tmp/*
+tmp/*
+!tmp/pids/
+!tmp/sockets/
 !/log/.keep
 !/tmp/.keep
+!/tmp/pid/.keep
+!/tmp/sockets/.keep
 
 # TODO Comment out this rule if you are OK with secrets being uploaded to the repo
 config/initializers/secret_token.rb

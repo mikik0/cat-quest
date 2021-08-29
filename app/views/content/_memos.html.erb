@@ -1,11 +1,18 @@
 <table>
-    <% content.memos.each do |memo| %>
-        <tr>
-            <td id="<%= memo.id %>" class="cursor-pointer"><%= Time.at(memo.time).utc.strftime('%X') %></td>
-            <td><%= memo.text %></td>
-            <% if memo.user_id == current_user.id %>
-              <td><%= link_to '削除', myquest_content_memo_path(@quest,content,memo), method: :delete, remote: true, data: {confirm: 'よろしいですか'}  %></td>
-            <% end %>
-        </tr>
-    <% end %>
+  <% content.memos.each do |memo| %>
+    <tr>
+      <td data-memo-id="<%= memo.time %>" class="js-jamp-button cursor-pointer"><%= Time.at(memo.time).utc.strftime('%X') %></td>
+      <td><%= memo.user.name %></td>
+      <td><%= memo.text %></td>
+      <td class = <%= "good--" + memo.id.to_s %>>
+        <%= render "goods/favo_link" ,memo: memo, user: current_user %>
+      </td>
+      <td class = <%= "good-count--" + memo.id.to_s %>>
+        <%= memo.goods.count %></td>
+      </td>
+      <% if memo.user_id == current_user.id %>
+        <td><%= link_to '削除', myquest_content_memo_path(@quest,content,memo), method: :delete, remote: true, data: {confirm: 'よろしいですか'}  %></td>
+      <% end %>
+    </tr>
+  <% end %>
 </table>

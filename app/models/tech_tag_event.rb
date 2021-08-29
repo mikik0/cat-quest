@@ -1,0 +1,2 @@
+class TechTagEvent < ApplicationRecord
+end

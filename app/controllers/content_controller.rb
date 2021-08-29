@@ -1,4 +1,5 @@
 class ContentController < ApplicationController
+
   before_action :set_content
 
   def index

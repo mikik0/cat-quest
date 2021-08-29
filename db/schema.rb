@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_20_050728) do
+ActiveRecord::Schema.define(version: 2021_08_26_130610) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 2021_08_20_050728) do
   create_table "nekokans", force: :cascade do |t|
     t.bigint "user_id"
     t.date "acquired_at"
-    t.string "nekocan"
+    t.integer "nekokan"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_nekokans_on_user_id"
@@ -93,6 +93,13 @@ ActiveRecord::Schema.define(version: 2021_08_20_050728) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "tech_tag_events", force: :cascade do |t|
+    t.integer "content_id"
+    t.string "youtube_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "user_contents", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "content_id"
@@ -118,7 +125,7 @@ ActiveRecord::Schema.define(version: 2021_08_20_050728) do
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.text "introduction"
-    t.integer "total_nekokan"
+    t.integer "total_nekokan", default: 0
     t.bigint "character_id"
     t.string "encrypted_password", default: "", null: false
     t.datetime "remember_created_at"

@@ -3,7 +3,7 @@ class CreateNekocans < ActiveRecord::Migration[5.2]
     create_table :nekokans do |t|
       t.references :user, foreign_key: true
       t.date :acquired_at
-      t.string :nekocan
+      t.integer :nekokan
 
       t.timestamps
     end

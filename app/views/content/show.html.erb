@@ -1,3 +1,4 @@
+<p id="notice"><%= notice %></p>
 <section class="hoge">
     <div class="player">
       <div id="ytplayer"></div>
@@ -100,11 +101,11 @@
 
     setInterval(fn, 1000);
 
-    <% @content.memos.each do |memo| %>
-    var jamp = document.getElementById('<%= memo.id %>');
-    jamp.addEventListener('click', function() {
-        player.loadVideoById({'videoId': '<%= @content.youtube_url.gsub("https://www.youtube.com/watch?v=","") %>','startSeconds': <%= memo.time %>});
-    }, false);
-    <% end %>
+    $(function () {
+        $(document).on("click", ".js-jamp-button", function () {
+            var memoTime = $(this).data("memo-id");
+            player.seekTo(memoTime, true);
+        });
+    });
 
 </script>

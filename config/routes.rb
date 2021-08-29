@@ -18,7 +18,19 @@ Rails.application.routes.draw do
     end
   end
 
+  post 'memo/:id' => 'goods#create', as: 'create_good'
+  delete 'memo/:id' => 'goods#destroy', as: 'delete_good'
+
   resources :quests do
     resource :user_quests, only: [:create, :destroy]
+    collection do
+      get 'search'
+    end
   end
+
+  get 'techtag/contents', to: 'tags#contents'
+  get 'techtag/index', to: 'tags#index'
+  get 'techtag/create', to: 'tags#create'
+  get 'techtag/event', to: 'tags#event'
+
 end
