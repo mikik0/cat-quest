@@ -1,24 +1,23 @@
 <p id="notice"><%= notice %></p>
 
-<section class="text-gray-600 body-font">
-  <div class="container py-24 mx-auto">
-    <div class="flex flex-col text-center w-full mb-20">
-      <h1 class="sm:text-4xl text-3xl font-medium title-font mb-2 text-gray-900">受注中クエスト一覧</h1>
-    </div>
-    <div class="lg:w-2/3 w-full mx-auto overflow-auto">
-      <table class="table-auto w-full text-left whitespace-no-wrap">
-        <thead>
-          <tr>
-            <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-200 rounded-tl rounded-bl">タイトル</th>
-            <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-200">開始日</th>
-            <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-200">終了日</th>
-            <th class="w-10 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-200 rounded-tr rounded-br"></th>
-            <th class="w-10 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-200 rounded-tr rounded-br"></th>
-            <th class="w-10 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-200 rounded-tr rounded-br"></th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @quests.each do |quest| %>
+<div class="container mx-auto">
+  <div class="flex flex-col text-center w-full mt-8 mb-8">
+    <h1 class="sm:text-4xl text-3xl font-medium title-font mb-2 text-gray-900">受注中クエスト一覧</h1>
+  </div>
+  <div class="lg:w-2/3 w-full mx-auto overflow-auto">
+    <table class="table-auto w-full text-left whitespace-no-wrap">
+      <thead>
+        <tr>
+          <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-xl bg-gray-200 rounded-tl rounded-bl text-center">タイトル</th>
+          <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-xl bg-gray-200 text-center">開始日</th>
+          <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-xl bg-gray-200 text-center">終了日</th>
+          <th class="w-10 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-200 rounded-tr rounded-br"></th>
+          <th class="w-10 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-200 rounded-tr rounded-br"></th>
+          <th class="w-10 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-200 rounded-tr rounded-br"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @quests.each do |quest| %>
           <tr>
             <td class="text-lg text-gray-900"><%= link_to quest.title, quest_path(quest), class:"block px-4 py-3" %></td>
             <td class="text-lg text-gray-900"><%= link_to quest.created_at.strftime("%Y-%m-%d %H:%M"), quest_path(quest), class:"block px-4 py-3" %></td>
@@ -30,11 +29,10 @@
             <% end %>
           </tr>
         <% end %>
-        </tbody>
-      </table>
-    </div>
-    <div class="flex pl-4 mt-4 lg:w-2/3 w-full mx-auto">
-      <%= link_to 'クエスト作成', new_quest_path, :class  => "flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded" %>
-    </div>
+      </tbody>
+    </table>
   </div>
-</section>
+  <div class="flex pl-4 mt-4 lg:w-2/3 w-full mx-auto">
+    <%= link_to 'クエスト作成', new_quest_path, :class => "flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded" %>
+  </div>
+</div>

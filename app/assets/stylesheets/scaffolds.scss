@@ -2,13 +2,16 @@ body {
   background-color: #fff;
   color: #333;
   margin: 33px;
-  font-family: verdana, arial, helvetica, sans-serif;
+  font-family: 'MPLUSRounded1c-Regular', 'ヒラギノ角ゴシック', 'Hiragino Sans', sans-serif;
   font-size: 13px;
   line-height: 18px;
 }
 
-p, ol, ul, td {
-  font-family: verdana, arial, helvetica, sans-serif;
+ol,
+p,
+td,
+ul {
+  font-family: 'MPLUSRounded1c-Regular', 'ヒラギノ角ゴシック', 'Hiragino Sans', sans-serif;
   font-size: 13px;
   line-height: 18px;
 }
@@ -32,8 +35,9 @@ td {
 }
 
 div {
-  &.field, &.actions {
-    margin-bottom: 10px;
+  &.actions,
+  &.field {
+    margin-bottom: 24px;
   }
 }
 
@@ -72,57 +76,41 @@ div {
 
 label {
   display: block;
+  font-size: 20px;
+  margin-bottom: 8px;
 }
 
-.sidebar{
-  position: fixed;
+.sidebar {
   left: 0;
   top: 0;
   z-index: 200;
-  height: 100vh;
 }
 
-main{
-  margin-top: 50px;
-  margin-left: 300px;
-  margin-right: 200px;
-  width: calc(100% - 300px);
-}
-
-.player{
+.player {
   display: inline-block;
   width: 800px;
-  height: 600px;
+  height: auto;
   margin-right: 30px;
 }
 
-.memo{
+.memo {
   display: inline-block;
   width: calc(100% - 830px);
-  height: 600px;
+  height: auto;
   vertical-align: top;
 }
 
-@media screen and (max-width: 1100) {
-  .player {
-    display: block;
-    width: 100%;
-  }
-  .memo {
-    display: block;
-    width: 100%;
-  }
-}
-
-.hoge{
+.hoge {
   display: block;
   width: 100%;
 }
 
-.skm{
+.skm {
   margin: 15px;
 }
 
-.now{
+.now {
   margin-bottom: 30px;
 }
+
+@media screen and (min-width: 768px) {}
