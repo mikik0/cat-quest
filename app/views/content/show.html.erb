@@ -50,7 +50,10 @@
           events: {
               'onReady': onPlayerReady,
           },
-          videoId: '<%= @content.youtube_url.gsub("https://www.youtube.com/watch?v=","") %>'
+          videoId: '<%= @content.youtube_url.gsub("https://www.youtube.com/watch?v=","") %>',
+          playerVars: {
+            controls: 0 // コントロールバーを表示しない
+          }
       });
     }
 
